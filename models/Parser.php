@@ -20,23 +20,23 @@ class Parser extends Model
 
     public $logsPath = 'logs/error';
 
+    public static $qReq = 0;
+
+    public function init(){
+        static::$qReq++;
+    }
+
     protected function _curl()
     {
         $ch = curl_init();
-
-        // set url
         curl_setopt($ch, CURLOPT_URL, $this->getUrl());
-
-        //return the transfer as a string
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-        // $output contains the output string
         $output = curl_exec($ch);
-
-        // close curl resource to free up system resources
+        $responseCode = curl_getinfo ( $ch ,CURLINFO_RESPONSE_CODE);
         curl_close($ch);
-        if (!$output) {
-            $this->loging();
+        if ($responseCode !== 200) {
+            file_put_contents(Yii::getAlias('@app').'/log_req.txt',static::$qReq);
+            $this->setLogs();
         }
 
         return $output;
@@ -72,7 +72,7 @@ class Parser extends Model
         return $this->getOrCreateDir(Yii::getAlias('@app').'/'.$this->filePath);
     }
 
-    public function loging()
+    public function setLogs()
     {
         $arr = [
             'domain' => $this->domain,
@@ -80,7 +80,7 @@ class Parser extends Model
             'filePath' => $this->filePath,
             'model' => static::className(),
         ];
-        $json = Json::encode($this->getLogPath());
+        $json = Json::encode($arr);
         file_put_contents($this->getLogPath(), $json);
     }
 
@@ -125,6 +125,17 @@ class Parser extends Model
         }
 
         return $instance;
+    }
+
+    public function parse()
+    {
+        $methods = get_class_methods($this);
+        foreach ($methods as $v){
+            if (strstr($v,'parse') && $v !== 'parse' && $v !== 'parseAll' && $this->pageObject){
+                $this -> $v();
+            }
+        }
+        //  $this->parseSpans()->parseWebSite()->parseContent()->parseTotal()->parseTitle();
     }
 
     /**

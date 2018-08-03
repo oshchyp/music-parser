@@ -8,6 +8,7 @@ class ParseAlbumLinks extends Parser
 
     public $links = [];
 
+
     public function rules()
     {
         return [
@@ -36,14 +37,17 @@ class ParseAlbumLinks extends Parser
 
     public static function parseAll()
     {
-        $instanse = static::getInstance()->loadModel();
+        $instance = static::getInstance();
         $pagination = ParserPaginationLinks::getInstance()->loadModel();
         if ($pagination->links) {
             foreach ($pagination->links as $k => $url) {
-                $instanse->links = [];
-                $instanse->setDomain($url);
-                $instanse->setFilePath('parseJsonFiles/albumLinks/page_'.$k.'.json');
-                $instanse->loadPage()->parseLinks()->saveToJson();
+                $instance->links = [];
+                $instance->setDomain($url);
+                $instance->setFilePath('parseJsonFiles/albumLinks/page_'.$k.'.json');
+                $instance->loadModel();
+                $instance->loadPage();
+                $instance->parse();
+                $instance->saveToJson();
             }
         }
     }
