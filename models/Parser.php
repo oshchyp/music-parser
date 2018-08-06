@@ -18,29 +18,52 @@ class Parser extends Model
 
     public $pageObject;
 
-    public $logsPath = 'logs/error';
+    //public $logsPath = 'logs/p.json';
 
     public static $qReq = 0;
 
-    public function init(){
-        static::$qReq++;
-    }
 
     protected function _curl()
     {
+        static::$qReq++;
+        $file = $this->getFileDownloadPath() ? fopen($this->getFileDownloadPath(),'w+') : null;
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $this->getUrl());
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $options = [
+            CURLOPT_URL => $this->getUrl(),
+            CURLOPT_RETURNTRANSFER => 1,
+        ];
+        if ($this->getCookiePath()) {
+            $options +=[
+                CURLOPT_COOKIEJAR => $this->getCookiePath(),
+                CURLOPT_COOKIEFILE => $this->getCookiePath(),
+            ];
+        }
+
+        if ($file) {
+            $options +=[
+                CURLOPT_TIMEOUT => 600,
+                CURLOPT_FILE => $file,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_SSL_VERIFYHOST => '0',
+                CURLOPT_SSL_VERIFYPEER => '0',
+                CURLOPT_VERBOSE => true,
+            ];
+       }
+        curl_setopt_array($ch, $options);
         $output = curl_exec($ch);
-        $responseCode = curl_getinfo ( $ch ,CURLINFO_RESPONSE_CODE);
+        $responseCode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
         curl_close($ch);
+
+        if ($file) {
+            fclose($file);
+        }
         if ($responseCode !== 200) {
-            file_put_contents(Yii::getAlias('@app').'/log_req.txt',static::$qReq);
             $this->setLogs();
         }
 
         return $output;
     }
+
 
     public function loadPage()
     {
@@ -54,7 +77,7 @@ class Parser extends Model
     {
         $url = $this->domain;
         if ($this->url) {
-            $url .= '/'.$this->url;
+            $url .= '/' . $this->url;
         }
 
         return $url;
@@ -62,14 +85,24 @@ class Parser extends Model
 
     public function getLogPath()
     {
-        $path = Yii::getAlias('@app').'/'.$this->logsPath.'/'.str_replace('/', '-', $this->filePath);
+        $path = Yii::getAlias('@app') . '/logs' . str_replace('parseJsonFiles', '', $this->filePath);
 
         return $this->getOrCreateDir($path);
     }
 
     public function getFilePath()
     {
-        return $this->getOrCreateDir(Yii::getAlias('@app').'/'.$this->filePath);
+        return $this->getOrCreateDir(Yii::getAlias('@app') . '/' . $this->filePath);
+    }
+
+    public function getCookiePath()
+    {
+        return null;
+    }
+
+    public function getFileDownloadPath()
+    {
+        return null;
     }
 
     public function setLogs()
@@ -130,9 +163,9 @@ class Parser extends Model
     public function parse()
     {
         $methods = get_class_methods($this);
-        foreach ($methods as $v){
-            if (strstr($v,'parse') && $v !== 'parse' && $v !== 'parseAll' && $this->pageObject){
-                $this -> $v();
+        foreach ($methods as $v) {
+            if (strstr($v, 'parse') && $v !== 'parse' && $v !== 'parseAll' && $this->pageObject) {
+                $this->$v();
             }
         }
         //  $this->parseSpans()->parseWebSite()->parseContent()->parseTotal()->parseTitle();

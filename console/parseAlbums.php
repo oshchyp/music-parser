@@ -8,5 +8,5 @@
 
 include_once '../index.php';
 
-\app\models\ParseAlbums::parseAll();
+\app\models\ParserAlbums::parseAll();
 

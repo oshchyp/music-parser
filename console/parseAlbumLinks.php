@@ -7,4 +7,4 @@
  */
 
 include_once '../index.php';
-$model =\app\models\ParseAlbumLinks::parseAll();
+$model =\app\models\ParserAlbumLinks::parseAll();
