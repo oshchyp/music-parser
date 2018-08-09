@@ -2,7 +2,7 @@
 
  include_once '../index.php';
 
- $archiveModel =  app\models\parserAlbumsArchives::getInstance();
+ $archiveModel =  app\models\ParserAlbumsArchives::getInstance();
  $archiveModel -> setDomain("{domain}");
  $archiveModel -> loadPage();
 
