@@ -3,67 +3,98 @@
  * Created by PhpStorm.
  * User: programmer_5
  * Date: 06.08.2018
- * Time: 17:52
+ * Time: 17:52.
  */
 
 namespace app\models;
 
-
+use Yii;
 use yii\base\Model;
+use yii\helpers\Json;
 
 class UploadAlbumArchive extends Model
 {
-
     public $filePath = '';
 
     public $token = '1000019_PcpB45eRcwPftsmmSqph';
 
-    public $folderId = 1;
+    public $folderId = null;
 
-    public function upload(){
-        $name = basename($this->filePath);
-        $data = array('file_name' => $name,
-            'file_size' => filesize($this->filePath),
-            'folder_id' => $this -> folderId, );
-        $data_string = json_encode($data);
+    public $apiUrl = 'https://api.fc.4crp.com';
 
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            //CURLOPT_VERBOSE => true,
+    private function _curl($url, $data = [], $headers = [])
+    {
+        $options = [
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_POST => true,
-            CURLOPT_POSTFIELDS => $data_string,
-            CURLOPT_URL => $this->api_url.'/upldreq',
-            CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/json',
-                'Content-Length: '.strlen($data_string),
-                'Api-Token: '.$this->api_token,
-            ), ));
-        $response = curl_exec($curl);
-        // var_dump($response);
-        // die();
-        // Извлечение пути для загрузки и подготовка файла
-        $upldreq_url = json_decode($response)->link;
-        $data = array('file' => file_get_contents($filepath));
-        // Загрузка файла в виртуальную файловую систему
-        curl_setopt_array($curl, array(
-            //CURLOPT_VERBOSE => true,
-            CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_POST => true,
-            CURLOPT_POSTFIELDS => $data,
-            CURLOPT_URL => 'https://'.$upldreq_url,
-            CURLOPT_HTTPHEADER => array(
-                'Content-Type: multipart/form-data',
-                'Api-Token: '.$this->api_token,
-            ), ));
-        $response = curl_exec($curl);
-        curl_close($curl);
-        // формируем публичную ссылку на скачивание и возвращаем ее
-        $public_url = 'https://fc.4crp.com/d/'.json_decode($response)->uid;
+            CURLOPT_URL => $url,
+        ];
+        if ($data) {
+            $options[CURLOPT_POSTFIELDS] = $data;
+        }
+        if ($headers) {
+            $options[CURLOPT_HTTPHEADER] = $headers;
+        }
+        $ch = curl_init();
+        curl_setopt_array($ch, $options);
+        $response = curl_exec($ch);
+        //dump($response, 1);
+        curl_close($ch);
 
-        return $public_url;
+        return $response;
     }
 
+    public function getUploadLink()
+    {
+        $data = [
+            'file_name' => basename($this->getFilePath()),
+            'file_size' => filesize($this->getFilePath()),
+            'folder_id' => $this->folderId,
+        ];
+        $dataJson = Json::encode($data);
+        $headers = [
+            'Content-Type: application/json',
+            'Content-Length: '.strlen($dataJson),
+            'Api-Token: '.$this->token,
+        ];
+        $response = $this->_curl($this->apiUrl.'/upldreq', $dataJson, $headers);
+        $responseArray = Json::decode($response, true);
+        if (array_key_exists('link', $responseArray)) {
+            return $responseArray['link'];
+        }
+
+        return null;
+    }
+
+    public function getPublicLink($url)
+    {
+        $data = array('file' => file_get_contents($this->getFilePath()));
+        $headers = [
+            'Content-Type: multipart/form-data',
+            'Api-Token: '.$this->token,
+        ];
+        $response = $this->_curl($url, $data, $headers);
+        $responseArray = Json::decode($response, true);
+        if (array_key_exists('uid', $responseArray)) {
+            return 'https://fc.4crp.com/d/'.$responseArray['uid'];
+        }
+
+        return null;
+    }
+
+    public function getFilePath()
+    {
+        return strstr($this->filePath, Yii::getAlias('@app')) ? $this->filePath : Yii::getAlias('@app').'/'.$this->filePath;
+    }
+
+    public function upload()
+    {
+        $uploadLink = $this->getUploadLink();
+        if ($uploadLink) {
+            return $this->getPublicLink('https://'.$uploadLink);
+        }
+
+        return null;
+    }
 }
