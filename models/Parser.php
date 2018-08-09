@@ -14,9 +14,11 @@ class Parser extends Model
 
     public $url;
 
-    public $filePath = 'parseJsonFiles/p.json';
+    public $filePath;
 
     public $pageObject;
+
+    public $logPath = '@app/music_files/logs/parser';
 
     //public $logsPath = 'logs/p.json';
 
@@ -85,14 +87,14 @@ class Parser extends Model
 
     public function getLogPath()
     {
-        $path = Yii::getAlias('@app') . '/logs' . str_replace('parseJsonFiles', '', $this->filePath);
+        $path = Yii::getAlias($this->logPath) . '/' . str_replace('app\\models\\','',static::className()).'/'.str_replace(['https://','/'],['','-'],$this->getUrl());
 
         return $this->getOrCreateDir($path);
     }
 
     public function getFilePath()
     {
-        return $this->getOrCreateDir(Yii::getAlias('@app') . '/' . $this->filePath);
+        return $this->getOrCreateDir(Yii::getAlias($this->filePath));
     }
 
     public function getCookiePath()
@@ -168,7 +170,7 @@ class Parser extends Model
                 $this->$v();
             }
         }
-        //  $this->parseSpans()->parseWebSite()->parseContent()->parseTotal()->parseTitle();
+        return $this;
     }
 
     /**

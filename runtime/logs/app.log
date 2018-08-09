@@ -1,0 +1,212 @@
+2018-08-09 13:46:42 [-][-][-][error][ReflectionException] ReflectionException: Class yii\gii\Module does not exist in /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/di/Container.php:428
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/di/Container.php(428): ReflectionClass->__construct('yii\\gii\\Module')
+#1 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/di/Container.php(364): yii\di\Container->getDependencies('yii\\gii\\Module')
+#2 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/di/Container.php(156): yii\di\Container->build('yii\\gii\\Module', Array, Array)
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/BaseYii.php(349): yii\di\Container->get('yii\\gii\\Module', Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(315): yii\base\Module->getModule('gii')
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(273): yii\base\Application->bootstrap()
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(124): yii\base\Application->init()
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/BaseObject.php(109): yii\console\Application->init()
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(89): yii\base\Application->__construct(Array)
+#11 /Users/programmer_5/Sites/parser-music/yii(19): yii\console\Application->__construct(Array)
+#12 {main}
+2018-08-09 13:46:42 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.OveTWQLiWj/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.WHJlCQP5Gh/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1533822402.9002
+    'REQUEST_TIME' => 1533822402
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser'
+        2 => 'wefwsdwed'
+    ]
+    'argc' => 3
+]
+2018-08-09 14:06:54 [-][-][-][error][ReflectionException] ReflectionException: Class yii\gii\Module does not exist in /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/di/Container.php:428
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/di/Container.php(428): ReflectionClass->__construct('yii\\gii\\Module')
+#1 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/di/Container.php(364): yii\di\Container->getDependencies('yii\\gii\\Module')
+#2 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/di/Container.php(156): yii\di\Container->build('yii\\gii\\Module', Array, Array)
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/BaseYii.php(349): yii\di\Container->get('yii\\gii\\Module', Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(315): yii\base\Module->getModule('gii')
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(273): yii\base\Application->bootstrap()
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(124): yii\base\Application->init()
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/BaseObject.php(109): yii\console\Application->init()
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(89): yii\base\Application->__construct(Array)
+#11 /Users/programmer_5/Sites/parser-music/yii(19): yii\console\Application->__construct(Array)
+#12 {main}
+2018-08-09 14:06:54 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.OveTWQLiWj/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.WHJlCQP5Gh/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1533823614.884
+    'REQUEST_TIME' => 1533823614
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser'
+    ]
+    'argc' => 2
+]
+2018-08-09 14:08:43 [-][-][-][error][yii\console\Exception] yii\console\Exception: Missing required arguments: message in /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php:186
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(51): yii\console\Controller->bindActionParams(Object(yii\base\InlineAction), Array)
+#1 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#2 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('', Array)
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('', Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser', Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#7 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#8 {main}
+2018-08-09 14:08:43 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.OveTWQLiWj/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.WHJlCQP5Gh/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1533823723.0448
+    'REQUEST_TIME' => 1533823723
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser'
+    ]
+    'argc' => 2
+]
+2018-08-09 14:46:21 [-][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: file_put_contents(/Users/programmer_5/Sites/parser-music/music_files/logs/parser/app\models\ParserAlbumLinks/www.israbox.ch/page/1/): failed to open stream: No such file or directory in /Users/programmer_5/Sites/parser-music/models/Parser.php:119
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError(2, 'file_put_conten...', '/Users/programm...', 119, Array)
+#1 /Users/programmer_5/Sites/parser-music/models/Parser.php(119): file_put_contents('/Users/programm...', '{"domain":"http...')
+#2 /Users/programmer_5/Sites/parser-music/models/Parser.php(63): app\models\Parser->setLogs()
+#3 /Users/programmer_5/Sites/parser-music/models/Parser.php(72): app\models\Parser->_curl()
+#4 /Users/programmer_5/Sites/parser-music/models/ParserAlbumLinks.php(48): app\models\Parser->loadPage()
+#5 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(32): app\models\ParserAlbumLinks::parseAll()
+#6 [internal function]: app\commands\ParserController->actionAlbumsLinks()
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('albums-links', Array)
+#10 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('albums-links', Array)
+#11 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/albums-l...', Array)
+#12 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/albums-l...', Array)
+#13 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#14 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#15 {main}
+2018-08-09 14:46:19 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.OveTWQLiWj/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.WHJlCQP5Gh/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1533825979.8405
+    'REQUEST_TIME' => 1533825979
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/albums-links'
+    ]
+    'argc' => 2
+]

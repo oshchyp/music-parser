@@ -279,16 +279,18 @@ class ParserAlbums extends Parser
         $archiveModel->setDomain($this->download_link_donor);
         $this->archivePath = $archiveModel->getFileDownloadPath();
 
-        if (!is_file($this->archivePath) || filesize($this->archivePath) <= 0) {
-            $fileExecPath = Yii::getAlias('@app').'/tmpScripts/'.uniqid(time()).'.php';
-            $fileExecCodePath = Yii::getAlias('@app').'/tmpScripts/code/parseAlbumArchives';
-            $fileExecCodeContent = file_get_contents($fileExecCodePath);
+        exec('php '.Yii::getAlias('@app').'/yii parser/albums-archives "'.$this->download_link_donor.'" > '.Yii::getAlias('@app').'/music_files/logs/output.txt &');
 
-            $fileExecCodeContent = str_replace('{domain}', $this->download_link_donor, $fileExecCodeContent);
-
-            file_put_contents($fileExecPath, $fileExecCodeContent);
-            exec('php '.$fileExecPath.' > '.Yii::getAlias('@app').'/tmpScripts/logs/output.txt &');
-        }
+//        if (!is_file($this->archivePath) || filesize($this->archivePath) <= 0) {
+//            $fileExecPath = Yii::getAlias('@app').'/tmpScripts/'.uniqid(time()).'.php';
+//            $fileExecCodePath = Yii::getAlias('@app').'/tmpScripts/code/parseAlbumArchives';
+//            $fileExecCodeContent = file_get_contents($fileExecCodePath);
+//
+//            $fileExecCodeContent = str_replace('{domain}', $this->download_link_donor, $fileExecCodeContent);
+//
+//            file_put_contents($fileExecPath, $fileExecCodeContent);
+//            exec('php '.$fileExecPath.' > '.Yii::getAlias('@app').'/tmpScripts/logs/output.txt &');
+//        }
     }
 
     //public function uploadArchive

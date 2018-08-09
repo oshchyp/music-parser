@@ -4,7 +4,7 @@ namespace app\models;
 
 class ParserAlbumLinks extends Parser
 {
-    public $filePath = 'parseJsonFiles/albumLinks.json';
+    public $filePath = '@app/music_files/json/album_links/links.json';
 
     public $links = [];
 
@@ -43,7 +43,7 @@ class ParserAlbumLinks extends Parser
             foreach ($pagination->links as $k => $url) {
                 $instance->links = [];
                 $instance->setDomain($url);
-                $instance->setFilePath('parseJsonFiles/albumLinks/page_'.$k.'.json');
+                $instance->setFilePath('@app/music_files/json/album_links/page_'.$k.'.json');
                 $instance->loadModel();
                 $instance->loadPage();
                 $instance->parse();

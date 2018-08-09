@@ -4,7 +4,7 @@ namespace app\models;
 
 class ParserPaginationLinks extends Parser
 {
-    public $filePath = 'parseJsonFiles/paginationLinks.json';
+    public $filePath = '@app/music_files/json/paginationLinks.json';
 
     public $links = [];
 

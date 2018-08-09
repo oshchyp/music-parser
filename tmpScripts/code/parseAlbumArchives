@@ -1,9 +1,0 @@
-<?php
-
- include_once '../index.php';
-
- $archiveModel =  app\models\ParserAlbumsArchives::getInstance();
- $archiveModel -> setDomain("{domain}");
- $archiveModel -> loadPage();
-
-unlink(__FILE__);

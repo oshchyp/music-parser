@@ -15,7 +15,7 @@ use yii\base\Model;
 class ParserAlbumsArchives extends Parser
 {
 
-    public $archivePath = 'archives/download';
+    public $archivePath = '@app/music_files/archives';
 
     public $domain = '';
 
@@ -25,7 +25,7 @@ class ParserAlbumsArchives extends Parser
     }
 
     public function getFileDownloadPath(){
-        $path = Yii::getAlias('@app').'/'.$this->archivePath.'/'.str_replace('.html','',basename($this->domain));
+        $path = Yii::getAlias($this->archivePath).'/'.str_replace('.html','',basename($this->domain));
         return static::getOrCreateDir($path);
     }
 

@@ -21,7 +21,7 @@ class LoginIsraCloud extends Parser
 
     public $domain = 'https://isra.cloud/';
 
-    public static $cookiePath = 'cookies/israCloud/cookie.txt';
+    public static $cookiePath = '@app/music_files/cookies/isra-cloud.txt';
 
     public function login(){
          $ch = curl_init('https://isra.cloud/');
@@ -55,7 +55,7 @@ class LoginIsraCloud extends Parser
     }
 
     public static function cookiePath(){
-        $path = Yii::getAlias('@app').'/'.static::$cookiePath;
+        $path = Yii::getAlias(static::$cookiePath);
         $path = Parser::getOrCreateDir($path);
         if (!is_file($path)){
             file_put_contents($path,'');
