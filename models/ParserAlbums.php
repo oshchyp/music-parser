@@ -48,6 +48,10 @@ class ParserAlbums extends Parser
 
     public $archivePath;
 
+    private $_descriptionObject;
+
+    private $_descriptionHtml;
+
     public function rules()
     {
         return [
@@ -160,9 +164,40 @@ class ParserAlbums extends Parser
         return $this;
     }
 
+    private function _handlingDescriptionHtml(){
+        $descriptionObject = $this->_getDescriptionObject();
+        if ($descriptionObject){
+            $replaceObject = $descriptionObject->find('div.quote');
+            if ($replaceObject){
+                foreach ($replaceObject as $v){
+                    if ($v->find('a')){
+                        $this->_descriptionHtml = str_replace($v->outertext,'',$this->_descriptionHtml);
+                    }
+                }
+            }
+        }
+    }
+
+    private function _getDescriptionObject(){
+        return HtmlDomParser::str_get_html($this->_getDescriptionHtml());
+    }
+
+    private function _getDescriptionHtml (){
+        if ($this->_descriptionHtml == null){
+            $descObject = $this->pageObject->find('div#dle-content div.content span[itemprop=description]', 0);
+            if ($descObject){
+                $this->_descriptionHtml = $descObject->innertext;
+                $this->_handlingDescriptionHtml();
+            } else {
+                $this->_descriptionHtml = '';
+            }
+        }
+        return $this->_descriptionHtml;
+    }
+
     public function parseDescription()
     {
-        if ($descObject = $this->pageObject->find('div#dle-content div.content span[itemprop=description] div.quote', 0)) {
+        if ($this->_getDescriptionObject() && $descObject = $this->_getDescriptionObject()->find('div.quote', 0)) {
             $this->description = $descObject->innertext;
         }
         return $this;
@@ -170,7 +205,7 @@ class ParserAlbums extends Parser
 
     public function parseTracklist()
     {
-        if ($descObject = $this->pageObject->find('div#dle-content div.content span[itemprop=description]', 0)) {
+        if ($descObject = $this->_getDescriptionObject()) {
             $this->tracklist = $descObject->innertext;
             if ($replaceBloks = $descObject->find('div')) {
                 foreach ($replaceBloks as $v) {
