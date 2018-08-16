@@ -279,12 +279,15 @@ class ParserAlbums extends Parser
         return $this;
     }
 
-    public function uploadArchive()
+    public function uploadArchive($delete = false)
     {
         $uploadModel = new UploadAlbumArchive();
         $uploadModel->filePath = $this->archivePath;
 
         $this->download_link = $uploadModel->upload();
+        if ($delete){
+            $uploadModel->deleteLocalArchive();
+        }
         return $this;
     }
 

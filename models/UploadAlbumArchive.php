@@ -100,4 +100,10 @@ class UploadAlbumArchive extends Model
 
         return null;
     }
+
+    public function deleteLocalArchive(){
+        if (is_file($this->getFilePath())){
+            unlink($this->getFilePath());
+        }
+    }
 }

@@ -57,7 +57,7 @@ class ParserController extends Controller
     public function actionAlbumsArchivesUpload($albumFilePath,$logPath='',$tmpPath=''){
 
         $model = ParserAlbums::getInstance(['filePath'=>$albumFilePath])->loadModel();
-        $model->uploadArchive();
+        $model->uploadArchive(true);
         $model-> saveToJson();
         SecondThread::endScript($logPath,$tmpPath);
 
@@ -69,6 +69,7 @@ class ParserController extends Controller
   //  public function action
 
     public function actionDebug(){
+        (new LoginIsraCloud) -> login();
         ParserAlbums::pAlbum('https://www.israbox.ch/3137660264-frank-sinatra-close-to-you-2014-hi-res.html');
         return ExitCode::OK;
     }
