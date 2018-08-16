@@ -1,9 +1,9 @@
 <?php
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=127.0.0.1;dbname=ohm_music',
-    'username' => 'musik',
-    'password' => '8T2o0Z2a',
+    'dsn' => 'mysql:host=localhost;dbname=yii_parser',
+    'username' => 'yii_parser',
+    'password' => 'q27031605w',
     'charset' => 'utf8',
     // Schema cache options (for production environment)
     //'enableSchemaCache' => true,
