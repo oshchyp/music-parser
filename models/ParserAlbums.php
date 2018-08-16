@@ -53,13 +53,17 @@ class ParserAlbums extends Parser
     public function rules()
     {
         return [
-            [['archivePath', 'domain', 'categories', 'title', 'artist', 'imageLink', 'year_of_release', 'tracklist', 'description', 'label', 'quality', 'total_time', 'total_size', 'download_link_donor', 'download_link', 'web_site', 'genre', 'content'], 'safe'],
+            [
+                [
+                    'archivePath', 'domain', 'categories', 'title', 'artist', 'imageLink', 'year_of_release', 'tracklist', 'description', 'label', 'quality', 'total_time', 'total_size', 'download_link_donor', 'download_link', 'web_site', 'genre', 'content'
+                ], 'safe'],
         ];
     }
 
     public function fields()
     {
         $fields = parent::fields();
+        $fields['donor_link'] = 'domain';
         unset($fields['domain'], $fields['url'], $fields['filePath'], $fields['filePath'], $fields['pageObject'], $fields['logsPath']);
 
         return $fields;
@@ -309,6 +313,12 @@ class ParserAlbums extends Parser
         return $albumInstance;
     }
 
+    public function saveToDb(){
+         $instance = Albums::getInstanceParser($this->toArray());
+         $instance->save();
+         $instance->saveCategoryAlbums();
+    }
+
     public static function parseAll()
     {
         $jsonFiles = FileHelper::findFiles(Yii::getAlias('@app/music_files/json/album_links'));
@@ -325,8 +335,5 @@ class ParserAlbums extends Parser
         }
     }
 
-    public static function saveArchiveAll()
-    {
-    }
 }
 //14:16
