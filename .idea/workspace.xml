@@ -134,8 +134,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/db.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="45">
+              <caret line="3" column="51" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -328,12 +328,12 @@
       <workItem from="1533889299678" duration="18939000" />
       <workItem from="1534148325839" duration="86000" />
       <workItem from="1534324512958" duration="17732000" />
-      <workItem from="1534403338325" duration="10992000" />
+      <workItem from="1534403338325" duration="11065000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105976000" />
+    <option name="totallyTimeSpent" value="106049000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="967" extended-state="6" />
@@ -579,8 +579,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/db.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="45">
+          <caret line="3" column="51" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="51" />
         </state>
       </provider>
     </entry>
