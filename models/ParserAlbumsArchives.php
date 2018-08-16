@@ -17,7 +17,9 @@ class ParserAlbumsArchives extends Parser
 
     public $archivePath = '@app/music_files/archives';
 
-    public $domain = '';
+    public $domain = '@app/';
+
+    public $fileDownloadPath = '';
 
     public function getCookiePath()
     {
@@ -25,8 +27,8 @@ class ParserAlbumsArchives extends Parser
     }
 
     public function getFileDownloadPath(){
-        $path = Yii::getAlias($this->archivePath).'/'.str_replace('.html','',basename($this->domain));
-        return static::getOrCreateDir($path);
+       // $path = Yii::getAlias($this->archivePath).'/'.str_replace('.html','',basename($this->domain));
+        return static::getOrCreateDir(Yii::getAlias($this->archivePath));
     }
 
 }

@@ -38,6 +38,8 @@ class ParserAlbums extends Parser
 
     public $download_link_donor;
 
+    public $download_link;
+
     public $web_site;
 
     public $genre;
@@ -46,14 +48,12 @@ class ParserAlbums extends Parser
 
     public $archivePath;
 
-    private $_descriptionObject;
-
     private $_descriptionHtml;
 
     public function rules()
     {
         return [
-            [['archivePath', 'domain', 'categories', 'title', 'artist', 'imageLink', 'year_of_release', 'tracklist', 'description', 'label', 'quality', 'total_time', 'total_size', 'download_link_donor', 'web_site', 'genre', 'content'], 'safe'],
+            [['archivePath', 'domain', 'categories', 'title', 'artist', 'imageLink', 'year_of_release', 'tracklist', 'description', 'label', 'quality', 'total_time', 'total_size', 'download_link_donor', 'download_link', 'web_site', 'genre', 'content'], 'safe'],
         ];
     }
 
@@ -82,7 +82,7 @@ class ParserAlbums extends Parser
         ];
 
         foreach ($spans as $k => $inf) {
-            if ($spanObject = $this->pageObject->find('div.content span[itemprop='.$inf[0].']', 0)) {
+            if ($spanObject = $this->pageObject->find('div.content span[itemprop=' . $inf[0] . ']', 0)) {
                 $attr = $inf[1];
                 $this->$attr = $spanObject->text();
             }
@@ -172,28 +172,31 @@ class ParserAlbums extends Parser
         return $this;
     }
 
-    private function _handlingDescriptionHtml(){
+    private function _handlingDescriptionHtml()
+    {
         $descriptionObject = $this->_getDescriptionObject();
-        if ($descriptionObject){
+        if ($descriptionObject) {
             $replaceObject = $descriptionObject->find('div.quote');
-            if ($replaceObject){
-                foreach ($replaceObject as $v){
-                    if ($v->find('a')){
-                        $this->_descriptionHtml = str_replace($v->outertext,'',$this->_descriptionHtml);
+            if ($replaceObject) {
+                foreach ($replaceObject as $v) {
+                    if ($v->find('a')) {
+                        $this->_descriptionHtml = str_replace($v->outertext, '', $this->_descriptionHtml);
                     }
                 }
             }
         }
     }
 
-    private function _getDescriptionObject(){
+    private function _getDescriptionObject()
+    {
         return HtmlDomParser::str_get_html($this->_getDescriptionHtml());
     }
 
-    private function _getDescriptionHtml (){
-        if ($this->_descriptionHtml == null){
+    private function _getDescriptionHtml()
+    {
+        if ($this->_descriptionHtml == null) {
             $descObject = $this->pageObject->find('div#dle-content div.content span[itemprop=description]', 0);
-            if ($descObject){
+            if ($descObject) {
                 $this->_descriptionHtml = $descObject->innertext;
                 $this->_handlingDescriptionHtml();
             } else {
@@ -205,23 +208,26 @@ class ParserAlbums extends Parser
 
     public function parseDescription()
     {
-        if ($this->_getDescriptionObject() && $descObject = $this->_getDescriptionObject()->find('div.quote', 0)) {
+//        if ($this->_getDescriptionObject() && $descObject = $this->_getDescriptionObject()->find('div.quote', 0)) {
+//            $this->description = $descObject->innertext;
+//        }
+
+        if ($descObject = $this->_getDescriptionObject()){
             $this->description = $descObject->innertext;
         }
-
         return $this;
     }
 
     public function parseTracklist()
     {
-        if ($descObject = $this->_getDescriptionObject()) {
-            $this->tracklist = $descObject->innertext;
-            if ($replaceBloks = $descObject->find('div')) {
-                foreach ($replaceBloks as $v) {
-                    $this->tracklist = str_replace($v->outertext, '', $this->tracklist);
-                }
-            }
-        }
+//        if ($descObject = $this->_getDescriptionObject()) {
+//            $this->tracklist = $descObject->innertext;
+//            if ($replaceBloks = $descObject->find('div')) {
+//                foreach ($replaceBloks as $v) {
+//                    $this->tracklist = str_replace($v->outertext, '', $this->tracklist);
+//                }
+//            }
+//        }
     }
 
     public function parseImgLink()
@@ -251,7 +257,7 @@ class ParserAlbums extends Parser
         $jsonFileName = strtolower(str_replace(['https://', 'http://', '.html'], '', $this->getUrl()));
         $jsonFileName = str_replace(' ', '_', $jsonFileName);
         $jsonFileName = str_replace('/', '-', $jsonFileName);
-        $this->filePath = 'parseJsonFiles/albums/'.$jsonFileName.'.json';
+        $this->filePath = '@app/music_files/json/albums/' . $jsonFileName . '.json';
     }
 
     public function loadPage()
@@ -267,52 +273,49 @@ class ParserAlbums extends Parser
 
     public function saveArchive()
     {
-        $archiveModel = ParserAlbumsArchives::getInstance();
-        $archiveModel->setDomain($this->download_link_donor);
+        $archiveModel = ParserAlbumsArchives::getInstance(['domain' => $this->download_link_donor, 'archivePath' => $this->getArchivePath()]);
         $archiveModel->loadPage();
-        $this->archivePath = $archiveModel->getFileDownloadPath();
+        $this->archivePath = $this->getArchivePath();
+        return $this;
     }
 
-    public function saveArchiveSecondThread()
+    public function uploadArchive()
     {
-        $archiveModel = ParserAlbumsArchives::getInstance();
-        $archiveModel->setDomain($this->download_link_donor);
-        $this->archivePath = $archiveModel->getFileDownloadPath();
+        $uploadModel = new UploadAlbumArchive();
+        $uploadModel->filePath = $this->archivePath;
 
-        exec('php '.Yii::getAlias('@app').'/yii parser/albums-archives "'.$this->download_link_donor.'" > '.Yii::getAlias('@app').'/music_files/logs/output.txt &');
-
-//        if (!is_file($this->archivePath) || filesize($this->archivePath) <= 0) {
-//            $fileExecPath = Yii::getAlias('@app').'/tmpScripts/'.uniqid(time()).'.php';
-//            $fileExecCodePath = Yii::getAlias('@app').'/tmpScripts/code/parseAlbumArchives';
-//            $fileExecCodeContent = file_get_contents($fileExecCodePath);
-//
-//            $fileExecCodeContent = str_replace('{domain}', $this->download_link_donor, $fileExecCodeContent);
-//
-//            file_put_contents($fileExecPath, $fileExecCodeContent);
-//            exec('php '.$fileExecPath.' > '.Yii::getAlias('@app').'/tmpScripts/logs/output.txt &');
-//        }
+        $this->download_link = $uploadModel->upload();
+        return $this;
     }
 
-    //public function uploadArchive
+    public function getArchivePath()
+    {
+        return '@app/music_files/archives/' . str_replace('.html', '', basename($this->download_link_donor));
+    }
+
+    public static function pAlbum($url){
+        $albumInstance = static::getInstance(['domain' => $url]);
+        $albumInstance->createFilePath();
+        $albumInstance->loadPage();
+        $albumInstance->parse();
+
+        if ($albumInstance->title) {
+            $albumInstance->saveToJson();
+            SecondThread::execStatic(['route' => 'parser/albums-archives', 'params' => [$albumInstance->filePath]],2);
+        }
+        return $albumInstance;
+    }
 
     public static function parseAll()
     {
-        $jsonFiles = FileHelper::findFiles(\Yii::getAlias('@app').'/parseJsonFiles/albumLinks');
+        $jsonFiles = FileHelper::findFiles(Yii::getAlias('@app/music_files/json/album_links'));
         $linksInstance = ParserAlbumLinks::getInstance();
         if ($jsonFiles) {
             foreach ($jsonFiles as $v) {
-                $linksInstance->setFilePath('parseJsonFiles/albumLinks/'.basename($v))->loadModel();
+                $linksInstance->setFilePath($v)->loadModel();
                 if ($linksInstance->links) {
                     foreach ($linksInstance->links as $url) {
-                        $albumInstance = static::getInstance(['domain' => $url]);
-                        $albumInstance->createFilePath();
-                        $albumInstance->loadPage();
-                        $albumInstance->parse();
-                        $albumInstance->saveArchiveSecondThread();
-                        if ($albumInstance->title) {
-                            $albumInstance->saveToJson();
-                        }
-                        //   die();
+                        static::pAlbum($url);
                     }
                 }
             }
@@ -323,3 +326,4 @@ class ParserAlbums extends Parser
     {
     }
 }
+//14:16

@@ -69,7 +69,10 @@ class UploadAlbumArchive extends Model
 
     public function getPublicLink($url)
     {
-        $data = array('file' => file_get_contents($this->getFilePath()));
+        ini_set('memory_limit', '500M');
+        $data = [
+            'file' => curl_file_create($this->getFilePath() , mime_content_type($this->getFilePath()), basename($this->getFilePath()))
+        ];
         $headers = [
             'Content-Type: multipart/form-data',
             'Api-Token: '.$this->token,
@@ -85,7 +88,7 @@ class UploadAlbumArchive extends Model
 
     public function getFilePath()
     {
-        return strstr($this->filePath, Yii::getAlias('@app')) ? $this->filePath : Yii::getAlias('@app').'/'.$this->filePath;
+        return Yii::getAlias($this->filePath);
     }
 
     public function upload()

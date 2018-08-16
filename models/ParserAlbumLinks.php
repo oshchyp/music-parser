@@ -26,12 +26,12 @@ class ParserAlbumLinks extends Parser
         if ($loadPage) {
             $this->loadPage();
         }
-        if ($links = $this->findDom('#dle-content .story a')) {
+        if ($links = $this->findDom('#dle-content .story h2 a')) {
             foreach ($links as $linkObj) {
                 $this->links[$linkObj->href] = $linkObj->href;
             }
         }
-
+     //   var_dump($this->links); die();
         return $this;
     }
 
