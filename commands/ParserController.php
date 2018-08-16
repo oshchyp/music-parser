@@ -70,7 +70,8 @@ class ParserController extends Controller
 
     public function actionDebug(){
         (new LoginIsraCloud) -> login();
-        ParserAlbums::pAlbum('https://www.israbox.ch/3137660264-frank-sinatra-close-to-you-2014-hi-res.html');
+        $instance = ParserAlbums::pAlbum('https://www.israbox.ch/3137660264-frank-sinatra-close-to-you-2014-hi-res.html');
+        $instance->saveToDb();
         return ExitCode::OK;
     }
 
