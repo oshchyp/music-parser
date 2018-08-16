@@ -33,7 +33,7 @@ class LoginIsraCloud extends Parser
          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
          curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
          $response = curl_exec($ch);
-         $responseCode = curl_getinfo ( $ch ,CURLINFO_RESPONSE_CODE);
+         $responseCode = curl_getinfo ( $ch ,CURLINFO_HTTP_CODE);
          curl_close($ch);
          return static::testLogin();
     }

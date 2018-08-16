@@ -53,7 +53,7 @@ class Parser extends Model
        }
         curl_setopt_array($ch, $options);
         $output = curl_exec($ch);
-        $responseCode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+        $responseCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
         if ($file) {
