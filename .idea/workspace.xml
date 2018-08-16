@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a197a85d-91c9-49f5-a9c4-76332772c2c7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/models/LoginIsraCloud.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/LoginIsraCloud.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Parser.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Parser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,10 +83,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/LoginIsraCloud.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
+            <state relative-caret-position="435">
               <caret line="35" column="65" lean-forward="true" selection-start-line="35" selection-start-column="65" selection-end-line="35" selection-end-column="65" />
             </state>
           </provider>
@@ -132,11 +131,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/db.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+            <state relative-caret-position="45">
+              <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -184,7 +183,6 @@
         <option value="$PROJECT_DIR$/models/ParserAlbumLinks.php" />
         <option value="$PROJECT_DIR$/models/SecondThread.php" />
         <option value="$PROJECT_DIR$/models/UploadAlbumArchive.php" />
-        <option value="$PROJECT_DIR$/config/db.php" />
         <option value="$PROJECT_DIR$/models/Categories.php" />
         <option value="$PROJECT_DIR$/models/categoryAlbums.php" />
         <option value="$PROJECT_DIR$/models/CategoryAlbums.php" />
@@ -193,6 +191,7 @@
         <option value="$PROJECT_DIR$/models/ParserAlbums.php" />
         <option value="$PROJECT_DIR$/models/Parser.php" />
         <option value="$PROJECT_DIR$/models/LoginIsraCloud.php" />
+        <option value="$PROJECT_DIR$/config/db.php" />
       </list>
     </option>
   </component>
@@ -329,12 +328,12 @@
       <workItem from="1533889299678" duration="18939000" />
       <workItem from="1534148325839" duration="86000" />
       <workItem from="1534324512958" duration="17732000" />
-      <workItem from="1534403338325" duration="10345000" />
+      <workItem from="1534403338325" duration="10609000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105329000" />
+    <option name="totallyTimeSpent" value="105593000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="967" extended-state="6" />
@@ -547,13 +546,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/db.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/Categories.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="395">
@@ -580,8 +572,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/LoginIsraCloud.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
+        <state relative-caret-position="435">
           <caret line="35" column="65" lean-forward="true" selection-start-line="35" selection-start-column="65" selection-end-line="35" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
         </state>
       </provider>
     </entry>
