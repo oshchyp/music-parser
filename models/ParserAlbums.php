@@ -45,7 +45,6 @@ class ParserAlbums extends Parser
     public $genre;
 
 
-
     public $archivePath;
 
     private $_descriptionHtml;
@@ -169,7 +168,7 @@ class ParserAlbums extends Parser
     {
         if ($catObject = $this->pageObject->find('div#dle-content div.content dt.end a')) {
             foreach ($catObject as $aObject) {
-                $this->categories[] = str_replace(['&amp;','  '],['',' '],$aObject->text());
+                $this->categories[] = str_replace(['&amp;', '  '], ['', ' '], $aObject->text());
             }
 
         }
@@ -190,27 +189,27 @@ class ParserAlbums extends Parser
 //            }
 
             $replaceImgObj = $descriptionObject->find('img');
-            if ($replaceImgObj){
+            if ($replaceImgObj) {
                 foreach ($replaceImgObj as $item) {
                     $this->_descriptionHtml = str_replace($item->outertext, '', $this->_descriptionHtml);
                 }
             }
-            
+
             $comment = $descriptionObject->find('comment');
-            if ($comment){
+            if ($comment) {
                 foreach ($comment as $item) {
                     $this->_descriptionHtml = str_replace($item->outertext, '', $this->_descriptionHtml);
                 }
             }
 
             $links = $descriptionObject->find('a');
-            if ($links){
+            if ($links) {
                 foreach ($links as $item) {
                     $this->_descriptionHtml = str_replace($item->outertext, '', $this->_descriptionHtml);
                 }
             }
         }
-       // var_dump($this->_descriptionHtml);die();
+        // var_dump($this->_descriptionHtml);die();
     }
 
     private function _getDescriptionObject()
@@ -238,7 +237,7 @@ class ParserAlbums extends Parser
 //            $this->description = $descObject->innertext;
 //        }
 
-        if ($descObject = $this->_getDescriptionObject()){
+        if ($descObject = $this->_getDescriptionObject()) {
             $this->description = $descObject->innertext;
         }
         return $this;
@@ -299,29 +298,30 @@ class ParserAlbums extends Parser
 
     public function saveArchive()
     {
-      //  if (!$this->download_link) {
-            $archiveModel = ParserAlbumsArchives::getInstance(['domain' => $this->download_link_donor, 'archivePath' => $this->getArchivePath()]);
-            $archiveModel->loadPage();
+        //  if (!$this->download_link) {
+        $archiveModel = ParserAlbumsArchives::getInstance(['domain' => $this->download_link_donor, 'archivePath' => $this->getArchivePath()]);
+        $archiveModel->loadPage();
 
-//            $archiveHandling = ArchiveHandling::getInstance(['filePath'=>$this->getArchivePath()]);
-//            $archiveHandling->unarchive();
-//            $this->archivePath = $archiveHandling->getNewFilePath();
+        $archiveHandling = ArchiveHandling::getInstance(['filePath' => '@app/music_files/archives/test.rar']);
+        $archiveHandling->unarchive();
+        $archiveHandling->handlingTmpDir();
+        $archiveHandling->archive();
+        $this->archivePath = $archiveHandling->getNewFilePath();
 
-            $this->archivePath = $this->getArchivePath();
-     //   }
+        //   }
         return $this;
     }
 
     public function uploadArchive($delete = false)
     {
-       // if (!$this->download_link) {
-            $uploadModel = new UploadAlbumArchive();
-            $uploadModel->filePath = $this->archivePath;
-            $this->download_link = $uploadModel->upload();
-            if ($delete) {
-                $uploadModel->deleteLocalArchive();
-            }
-       // }
+        // if (!$this->download_link) {
+        $uploadModel = new UploadAlbumArchive();
+        $uploadModel->filePath = $this->archivePath;
+        $this->download_link = $uploadModel->upload();
+        if ($delete) {
+            $uploadModel->deleteLocalArchive();
+        }
+        // }
         return $this;
     }
 
@@ -330,7 +330,8 @@ class ParserAlbums extends Parser
         return '@app/music_files/archives/' . str_replace('.html', '', basename($this->download_link_donor));
     }
 
-    public static function pAlbum($url){
+    public static function pAlbum($url)
+    {
         $albumInstance = static::getInstance(['domain' => $url]);
         $albumInstance->createFilePath();
         $albumInstance->loadPage();
@@ -338,16 +339,17 @@ class ParserAlbums extends Parser
 
         if ($albumInstance->title) {
             $albumInstance->saveToJson();
-                SecondThread::execStatic(['route' => 'parser/albums-archives', 'params' => [$albumInstance->filePath]],2);
+            SecondThread::execStatic(['route' => 'parser/albums-archives', 'params' => [$albumInstance->filePath]], 2);
         }
         return $albumInstance;
     }
 
-    public function saveToDb(){
-         $instance = Albums::getInstanceParser($this->toArray());
-         $instance->save();
-         $instance->saveCategoryAlbums();
-         $instance->saveTypeAlbums();
+    public function saveToDb()
+    {
+        $instance = Albums::getInstanceParser($this->toArray());
+        $instance->save();
+        $instance->saveCategoryAlbums();
+        $instance->saveTypeAlbums();
     }
 
     public static function parseAll()
@@ -360,20 +362,21 @@ class ParserAlbums extends Parser
                 if ($linksInstance->links) {
                     foreach ($linksInstance->links as $url) {
                         $instance = static::pAlbum($url);
-                      //  $instance->saveToDb();
+                        //  $instance->saveToDb();
                     }
                 }
             }
         }
     }
 
-    public static function partParsing($pagesModel=[]){
+    public static function partParsing($pagesModel = [])
+    {
         if ($pagesModel) {
             foreach ($pagesModel as $v) {
                 if ($v->links) {
                     foreach ($v->links as $url) {
                         $instance = static::pAlbum($url);
-                       // $instance->saveToDb();
+                        // $instance->saveToDb();
                     }
                 }
             }

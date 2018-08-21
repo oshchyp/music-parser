@@ -4,9 +4,7 @@
     <list default="true" id="a197a85d-91c9-49f5-a9c4-76332772c2c7" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/ParserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/commands/ParserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ArchiveHandling.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/ArchiveHandling.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/ParserAlbums.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/ParserAlbums.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/logs/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/logs/app.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,13 +51,13 @@
         <counts>
           <entry key="dummy" value="1" />
           <entry key="json" value="22" />
-          <entry key="php" value="6475" />
+          <entry key="php" value="6506" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="22" />
-          <entry key="PHP" value="6475" />
+          <entry key="PHP" value="6506" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
@@ -75,8 +73,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/ParserAlbums.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="310" column="9" lean-forward="true" selection-start-line="310" selection-start-column="9" selection-end-line="310" selection-end-column="9" />
+            <state relative-caret-position="299">
+              <caret line="312" column="5" lean-forward="true" selection-start-line="312" selection-start-column="5" selection-end-line="312" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -84,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/commands/ParserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="60" column="20" lean-forward="true" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
+            <state relative-caret-position="258">
+              <caret line="94" column="29" lean-forward="true" selection-start-line="91" selection-start-column="7" selection-end-line="94" selection-end-column="29" />
               <folding>
                 <element signature="e#121#152#0#PHP" expanded="true" />
               </folding>
@@ -146,8 +144,8 @@
         <option value="$PROJECT_DIR$/config/db.php" />
         <option value="$PROJECT_DIR$/vendor/sunra/php-simple-html-dom-parser/Src/Sunra/PhpSimple/simplehtmldom_1_5/simple_html_dom.php" />
         <option value="$PROJECT_DIR$/models/ParserCategories.php" />
-        <option value="$PROJECT_DIR$/commands/ParserController.php" />
         <option value="$PROJECT_DIR$/models/ArchiveHandling.php" />
+        <option value="$PROJECT_DIR$/commands/ParserController.php" />
         <option value="$PROJECT_DIR$/models/ParserAlbums.php" />
       </list>
     </option>
@@ -195,11 +193,6 @@
               <item name="parser-music" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="parser-music" type="b2602c69:ProjectViewProjectNode" />
-              <item name="parser-music" type="462c0819:PsiDirectoryNode" />
-              <item name="music_files" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -218,13 +211,14 @@
     <property name="settings.editor.selected.configurable" value="web.server" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/music_files/archives" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/music_files/logs/second_thread" />
       <recent name="$PROJECT_DIR$/music_files" />
       <recent name="$PROJECT_DIR$/config" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -263,12 +257,12 @@
       <workItem from="1534324512958" duration="17732000" />
       <workItem from="1534403338325" duration="11838000" />
       <workItem from="1534836217847" duration="5788000" />
-      <workItem from="1534847696141" duration="10136000" />
+      <workItem from="1534847696141" duration="11201000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122746000" />
+    <option name="totallyTimeSpent" value="123811000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="967" extended-state="6" />
@@ -507,8 +501,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/commands/ParserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="60" column="20" lean-forward="true" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
+        <state relative-caret-position="258">
+          <caret line="94" column="29" lean-forward="true" selection-start-line="91" selection-start-column="7" selection-end-line="94" selection-end-column="29" />
           <folding>
             <element signature="e#121#152#0#PHP" expanded="true" />
           </folding>
@@ -517,8 +511,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/ParserAlbums.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="310" column="9" lean-forward="true" selection-start-line="310" selection-start-column="9" selection-end-line="310" selection-end-column="9" />
+        <state relative-caret-position="299">
+          <caret line="312" column="5" lean-forward="true" selection-start-line="312" selection-start-column="5" selection-end-line="312" selection-end-column="5" />
         </state>
       </provider>
     </entry>
