@@ -81,16 +81,27 @@ class ArchiveHandling extends Model
         return $this;
     }
 
+    public function handlingTmpDir(){
+        $dir = static::getOrCreateDir($this->getTmpDirArchive(), false);
+        if ($file = FileHelper::findFiles($dir,['recursive'=>true])) {
+            foreach ($file as $filePath) {
+                if (!static::filterName($filePath)){
+                    unlink($filePath);
+                }
+            }
+        }
+    }
+
     public function archive(){
         $pathInfo = pathinfo($this->getNewFilePath());
         $newFilePath = array_key_exists('filename',$pathInfo) ? $pathInfo['filename'].'.zip' : uniqid(time()).'.zip';
         $newFilePath = $pathInfo['dirname'] .'/'.$newFilePath;
         $dir = static::getOrCreateDir($this->getTmpDirArchive(), false);
-        if ($file = FileHelper::findFiles($dir)) {
+        if ($file = FileHelper::findFiles($dir,['recursive'=>true])) {
             $zipObject = new \ZipArchive;
             if($zipObject->open(Yii::getAlias($newFilePath), \ZipArchive::CREATE) === true) {
                 foreach ($file as $filePath) {
-                    $zipObject->addFile($filePath,basename($filePath));
+                    $zipObject->addFile($filePath,str_replace($dir.'/','',$filePath));
                 }
                 $this->newFilePath = $newFilePath;
                 $zipObject->close();
@@ -103,11 +114,8 @@ class ArchiveHandling extends Model
         if (is_file(Yii::getAlias($this->filePath)) && $rarObject = \RarArchive::open(Yii::getAlias($this->filePath))){
             $entries = $rarObject->getEntries();
             foreach ($entries as $obj){
-                if (static::filterName($obj->getName())) {
-                    $obj->extract(static::getOrCreateDir($this->getTmpDirArchive(), false));
-                }
+                $obj->extract(static::getOrCreateDir($this->getTmpDirArchive(), false));
             }
-            $this->archive();
             $rarObject->close();
         }
 
@@ -115,13 +123,10 @@ class ArchiveHandling extends Model
     }
 
     public function unzip(){
+        $dir = static::getOrCreateDir($this->getTmpDirArchive());
         $zipObject = new \ZipArchive;
         if (is_file(Yii::getAlias($this->filePath)) && $zipObject->open(Yii::getAlias($this->filePath))){
-            for ($i = 0; $i < $zipObject->numFiles; $i++) {
-                if (!$filename = static::filterName($zipObject->getNameIndex($i))) {
-                    $zipObject->deleteIndex($i);
-                }
-            }
+            $zipObject->extractTo($dir);
         }
         $zipObject->close();
     }

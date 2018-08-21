@@ -299,7 +299,7 @@ class ParserAlbums extends Parser
 
     public function saveArchive()
     {
-        if (!$this->download_link) {
+      //  if (!$this->download_link) {
             $archiveModel = ParserAlbumsArchives::getInstance(['domain' => $this->download_link_donor, 'archivePath' => $this->getArchivePath()]);
             $archiveModel->loadPage();
 
@@ -308,20 +308,20 @@ class ParserAlbums extends Parser
 //            $this->archivePath = $archiveHandling->getNewFilePath();
 
             $this->archivePath = $this->getArchivePath();
-        }
+     //   }
         return $this;
     }
 
     public function uploadArchive($delete = false)
     {
-        if (!$this->download_link) {
+       // if (!$this->download_link) {
             $uploadModel = new UploadAlbumArchive();
             $uploadModel->filePath = $this->archivePath;
             $this->download_link = $uploadModel->upload();
             if ($delete) {
                 $uploadModel->deleteLocalArchive();
             }
-        }
+       // }
         return $this;
     }
 
@@ -338,7 +338,7 @@ class ParserAlbums extends Parser
 
         if ($albumInstance->title) {
             $albumInstance->saveToJson();
-          //      SecondThread::execStatic(['route' => 'parser/albums-archives', 'params' => [$albumInstance->filePath]],2);
+                SecondThread::execStatic(['route' => 'parser/albums-archives', 'params' => [$albumInstance->filePath]],2);
         }
         return $albumInstance;
     }
