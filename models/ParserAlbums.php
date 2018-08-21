@@ -44,7 +44,7 @@ class ParserAlbums extends Parser
 
     public $genre;
 
-    public $content;
+
 
     public $archivePath;
 
@@ -64,7 +64,7 @@ class ParserAlbums extends Parser
     {
         $fields = parent::fields();
         $fields['donor_link'] = 'domain';
-        unset($fields['domain'], $fields['url'], $fields['filePath'], $fields['filePath'], $fields['pageObject'], $fields['logsPath']);
+        unset($fields['url'], $fields['filePath'], $fields['filePath'], $fields['pageObject'], $fields['logsPath']);
 
         return $fields;
     }
@@ -169,10 +169,10 @@ class ParserAlbums extends Parser
     {
         if ($catObject = $this->pageObject->find('div#dle-content div.content dt.end a')) {
             foreach ($catObject as $aObject) {
-                $this->categories[] = $aObject->text();
+                $this->categories[] = str_replace(['&amp;','  '],['',' '],$aObject->text());
             }
-        }
 
+        }
         return $this;
     }
 
@@ -180,15 +180,37 @@ class ParserAlbums extends Parser
     {
         $descriptionObject = $this->_getDescriptionObject();
         if ($descriptionObject) {
-            $replaceObject = $descriptionObject->find('div.quote');
-            if ($replaceObject) {
-                foreach ($replaceObject as $v) {
-                    if ($v->find('a')) {
-                        $this->_descriptionHtml = str_replace($v->outertext, '', $this->_descriptionHtml);
-                    }
+//            $replaceObject = $descriptionObject->find('div.quote');
+//            if ($replaceObject) {
+//                foreach ($replaceObject as $v) {
+//                    if ($v->find('a')) {
+//                        $this->_descriptionHtml = str_replace($v->outertext, '', $this->_descriptionHtml);
+//                    }
+//                }
+//            }
+
+            $replaceImgObj = $descriptionObject->find('img');
+            if ($replaceImgObj){
+                foreach ($replaceImgObj as $item) {
+                    $this->_descriptionHtml = str_replace($item->outertext, '', $this->_descriptionHtml);
+                }
+            }
+            
+            $comment = $descriptionObject->find('comment');
+            if ($comment){
+                foreach ($comment as $item) {
+                    $this->_descriptionHtml = str_replace($item->outertext, '', $this->_descriptionHtml);
+                }
+            }
+
+            $links = $descriptionObject->find('a');
+            if ($links){
+                foreach ($links as $item) {
+                    $this->_descriptionHtml = str_replace($item->outertext, '', $this->_descriptionHtml);
                 }
             }
         }
+       // var_dump($this->_descriptionHtml);die();
     }
 
     private function _getDescriptionObject()
@@ -277,20 +299,23 @@ class ParserAlbums extends Parser
 
     public function saveArchive()
     {
-        $archiveModel = ParserAlbumsArchives::getInstance(['domain' => $this->download_link_donor, 'archivePath' => $this->getArchivePath()]);
-        $archiveModel->loadPage();
-        $this->archivePath = $this->getArchivePath();
+        if (!$this->download_link) {
+            $archiveModel = ParserAlbumsArchives::getInstance(['domain' => $this->download_link_donor, 'archivePath' => $this->getArchivePath()]);
+            $archiveModel->loadPage();
+            $this->archivePath = $this->getArchivePath();
+        }
         return $this;
     }
 
     public function uploadArchive($delete = false)
     {
-        $uploadModel = new UploadAlbumArchive();
-        $uploadModel->filePath = $this->archivePath;
-
-        $this->download_link = $uploadModel->upload();
-        if ($delete){
-            $uploadModel->deleteLocalArchive();
+        if (!$this->download_link) {
+            $uploadModel = new UploadAlbumArchive();
+            $uploadModel->filePath = $this->archivePath;
+            $this->download_link = $uploadModel->upload();
+            if ($delete) {
+                $uploadModel->deleteLocalArchive();
+            }
         }
         return $this;
     }
@@ -308,7 +333,7 @@ class ParserAlbums extends Parser
 
         if ($albumInstance->title) {
             $albumInstance->saveToJson();
-           // SecondThread::execStatic(['route' => 'parser/albums-archives', 'params' => [$albumInstance->filePath]],2);
+            SecondThread::execStatic(['route' => 'parser/albums-archives', 'params' => [$albumInstance->filePath]],2);
         }
         return $albumInstance;
     }
@@ -317,6 +342,7 @@ class ParserAlbums extends Parser
          $instance = Albums::getInstanceParser($this->toArray());
          $instance->save();
          $instance->saveCategoryAlbums();
+         $instance->saveTypeAlbums();
     }
 
     public static function parseAll()
@@ -328,7 +354,21 @@ class ParserAlbums extends Parser
                 $linksInstance->setFilePath($v)->loadModel();
                 if ($linksInstance->links) {
                     foreach ($linksInstance->links as $url) {
-                        static::pAlbum($url);
+                        $instance = static::pAlbum($url);
+                      //  $instance->saveToDb();
+                    }
+                }
+            }
+        }
+    }
+
+    public static function partParsing($pagesModel=[]){
+        if ($pagesModel) {
+            foreach ($pagesModel as $v) {
+                if ($v->links) {
+                    foreach ($v->links as $url) {
+                        $instance = static::pAlbum($url);
+                       // $instance->saveToDb();
                     }
                 }
             }
@@ -336,4 +376,4 @@ class ParserAlbums extends Parser
     }
 
 }
-//14:16
+//13:07

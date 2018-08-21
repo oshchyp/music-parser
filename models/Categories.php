@@ -45,6 +45,7 @@ class Categories extends ActiveRecord
             $instance = new static(['name'=>$name,'father_id' => $parent,'level' => $level]);
             $instance->save();
         }
+      //  dump($instance->getErrors());
         return $instance;
     }
 

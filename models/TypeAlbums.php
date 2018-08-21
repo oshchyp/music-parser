@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: programmer_5
  * Date: 16.08.2018
- * Time: 13:54
+ * Time: 16:25
  */
 
 namespace app\models;
@@ -11,15 +11,16 @@ namespace app\models;
 
 use yii\db\ActiveRecord;
 
-class CategoryAlbums extends ActiveRecord
+class TypeAlbums extends ActiveRecord
 {
+
 
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'category_albums';
+        return 'type_albums';
     }
 
     /**
@@ -28,8 +29,7 @@ class CategoryAlbums extends ActiveRecord
     public function rules()
     {
         return [
-
-            [['album_id', 'category_id'], 'integer']
+            [['album_id', 'type_id'], 'integer'],
 
         ];
     }

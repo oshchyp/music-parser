@@ -15,7 +15,11 @@ use yii\helpers\ArrayHelper;
 class Albums extends ActiveRecord
 {
 
-    public $categories = [];
+    public $types = [];
+
+    public $imgDir = '@app/../music.com/public/images';
+
+    public $imgPublicDir = '/images';
 
     /**
      * {@inheritdoc}
@@ -33,15 +37,52 @@ class Albums extends ActiveRecord
         return [
             [['categories'], 'safe'],
             [['donor_link'], 'unique'],
-            [['created_at', 'updated_at'], 'integer'],
+          //  [['created_at', 'updated_at'], 'integer'],
             [
                 [
-                    'donor_link', 'title', 'artist', 'image', 'year_of_release', 'tracklist', 'description', 'label', 'genre',
+                    'donor_link', 'imageLink', 'title', 'artist', 'image', 'year_of_release', 'tracklist', 'description', 'label', 'genre',
                     'quality', 'total_time', 'total_size', 'download_link', 'big_image', 'web_site'
                 ],
                 'string'
             ],
         ];
+    }
+
+    public function getTypeRules()
+    {
+        return [
+            '2018' => 1,
+            'Mp3' => 2,
+            'CD-Rip' => 3,
+            'HD & Vinyl' => 4,
+            'FLAC / APE' => 5,
+            'iTunes' => 6,
+            'Discography' => 7
+        ];
+    }
+
+     public function beforeValidate()
+     {
+        if (!$this->created_at){
+            $this->created_at = time();
+        }
+        $this->updated_at = time();
+        return true;
+     }
+
+    public function setImageLink($link)
+    {
+        $this->imageLink = $link;
+        if ($link && is_string($link)) {
+            $imgName = basename($link);
+            $filePath = \Yii::getAlias($this->imgDir) . '/' .$imgName;
+            $imgPublicPath = \Yii::getAlias($this->imgPublicDir).'/'.$imgName;
+            file_put_contents($filePath,file_get_contents($link));
+            if (is_file($filePath)){
+                $this->image = $this->big_image = $imgPublicPath;
+            }
+        }
+        return $this;
     }
 
     public function setCategories($categories)
@@ -51,7 +92,7 @@ class Albums extends ActiveRecord
             foreach ($categories as $level => $categoryName) {
                 $parent = isset($categoryModel) && $categoryModel ? $categoryModel->id : null;
                 $categoryModel = Categories::getInstanceWithSave($categoryName, $parent, $level);
-                $this->categories[] = $categoryModel->id;
+                $this->categories[] = $categoryModel;
             }
         }
         return $this;
@@ -61,15 +102,34 @@ class Albums extends ActiveRecord
     {
         if ($this->categories && $this->id) {
             CategoryAlbums::deleteAll(['album_id' => $this->id]);
-            foreach ($this->categories as $categoryID) {
+            foreach ($this->categories as $categoryObject) {
                 $categoryAlbumModel = new CategoryAlbums();
                 $categoryAlbumModel->attributes = [
                     'album_id' => $this->id,
-                    'category_id' => $categoryID
+                    'category_id' => $categoryObject->id
                 ];
                 $categoryAlbumModel->save();
             }
         }
+        return $this;
+    }
+
+    public function saveTypeAlbums()
+    {
+        if ($this->categories && $this->id) {
+            TypeAlbums::deleteAll(['album_id' => $this->id]);
+            foreach ($this->categories as $categoryObject) {
+                if ($typeID = ArrayHelper::getValue($this->getTypeRules(), $categoryObject->name)) {
+                    $typeAlbums = new TypeAlbums();
+                    $typeAlbums->attributes = [
+                        'album_id' => $this->id,
+                        'type_id' => $typeID
+                    ];
+                    $typeAlbums->save();
+                }
+            }
+        }
+        return $this;
     }
 
     public static function findByDonorLink($donorLink)
@@ -89,3 +149,4 @@ class Albums extends ActiveRecord
 
 
 }
+///var/www/www-root/data/www/music-parser/ohm_music.sql

@@ -42,6 +42,13 @@ class ParserController extends Controller
         return ExitCode::OK;
     }
 
+    public function actionPartParsing($logPath='',$tmpPath=''){
+        (new LoginIsraCloud)->login();
+        $links = ParserAlbumLinks::partParsing(4);
+        ParserAlbums::partParsing($links);
+
+    }
+
     public function actionAlbumsArchives($albumFilePath,$logPath,$tmpPath){
         $model = ParserAlbums::getInstance(['filePath'=>$albumFilePath])->loadModel();
         $model->saveArchive();
@@ -59,6 +66,7 @@ class ParserController extends Controller
         $model = ParserAlbums::getInstance(['filePath'=>$albumFilePath])->loadModel();
         $model->uploadArchive(true);
         $model-> saveToJson();
+        $model->saveToDb();
         SecondThread::endScript($logPath,$tmpPath);
 
         SecondThread::execLines('parser/albums-archives-upload');
@@ -69,8 +77,9 @@ class ParserController extends Controller
   //  public function action
 
     public function actionDebug(){
+       // phpinfo();die();
         (new LoginIsraCloud) -> login();
-        $instance = ParserAlbums::pAlbum('https://www.israbox.ch/3137660264-frank-sinatra-close-to-you-2014-hi-res.html');
+        $instance = ParserAlbums::pAlbum('https://www.israbox.ch/3136455199-till-bronner-till-bronner-2cd-deluxe-edition-2012.html');
         $instance->saveToDb();
         return ExitCode::OK;
     }

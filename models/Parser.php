@@ -20,10 +20,11 @@ class Parser extends Model
 
     public $logPath = '@app/music_files/logs/parser';
 
-    //public $logsPath = 'logs/p.json';
+    public $content = '';
 
     public static $qReq = 0;
 
+    public static $lastParsingFilePath = '@app/music_files/last_parsing.txt';
 
     protected function _curl()
     {
@@ -52,7 +53,7 @@ class Parser extends Model
             ];
        }
         curl_setopt_array($ch, $options);
-        $output = curl_exec($ch);
+        $this->content = curl_exec($ch);
         $responseCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
@@ -63,7 +64,7 @@ class Parser extends Model
             $this->setLogs();
         }
 
-        return $output;
+        return $this->content;
     }
 
 
@@ -207,5 +208,10 @@ class Parser extends Model
         $this->filePath = $filePath;
 
         return $this;
+    }
+
+    public static function getLastParsingPage()
+    {
+        return is_file(Yii::getAlias(static::$lastParsingFilePath)) ? (int)file_get_contents(Yii::getAlias(static::$lastParsingFilePath)) : 0;
     }
 }
