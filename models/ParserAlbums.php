@@ -333,7 +333,7 @@ class ParserAlbums extends Parser
 
         if ($albumInstance->title) {
             $albumInstance->saveToJson();
-            SecondThread::execStatic(['route' => 'parser/albums-archives', 'params' => [$albumInstance->filePath]],2);
+          //      SecondThread::execStatic(['route' => 'parser/albums-archives', 'params' => [$albumInstance->filePath]],2);
         }
         return $albumInstance;
     }

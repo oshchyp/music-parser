@@ -21,6 +21,8 @@ class Albums extends ActiveRecord
 
     public $imgPublicDir = '/images';
 
+    public $categories;
+
     /**
      * {@inheritdoc}
      */
@@ -85,30 +87,34 @@ class Albums extends ActiveRecord
         return $this;
     }
 
-    public function setCategories($categories)
-    {
-        if ($categories && is_array($categories)) {
-            $this->categories = [];
-            foreach ($categories as $level => $categoryName) {
-                $parent = isset($categoryModel) && $categoryModel ? $categoryModel->id : null;
-                $categoryModel = Categories::getInstanceWithSave($categoryName, $parent, $level);
-                $this->categories[] = $categoryModel;
-            }
-        }
-        return $this;
-    }
+//    public function setCategories($categories)
+//    {
+//        if ($categories && is_array($categories)) {
+//            $this->categories = [];
+//            foreach ($categories as $level => $categoryName) {
+//
+//                if ($categoryModel = Categories::find()->where(['name' => $categoryName])->one()){
+//                    $this->categories[] = $categoryModel;
+//                }
+//
+//            }
+//        }
+//        return $this;
+//    }
 
     public function saveCategoryAlbums()
     {
         if ($this->categories && $this->id) {
             CategoryAlbums::deleteAll(['album_id' => $this->id]);
-            foreach ($this->categories as $categoryObject) {
-                $categoryAlbumModel = new CategoryAlbums();
-                $categoryAlbumModel->attributes = [
-                    'album_id' => $this->id,
-                    'category_id' => $categoryObject->id
-                ];
-                $categoryAlbumModel->save();
+            foreach ($this->categories as $categoryName) {
+                if ($categoryObject = Categories::find()->where(['name' => $categoryName])->one()){
+                    $categoryAlbumModel = new CategoryAlbums();
+                    $categoryAlbumModel->attributes = [
+                        'album_id' => $this->id,
+                        'category_id' => $categoryObject->id
+                    ];
+                    $categoryAlbumModel->save();
+                }
             }
         }
         return $this;
@@ -116,10 +122,11 @@ class Albums extends ActiveRecord
 
     public function saveTypeAlbums()
     {
+      //  var_dump($this->categories); die();
         if ($this->categories && $this->id) {
             TypeAlbums::deleteAll(['album_id' => $this->id]);
-            foreach ($this->categories as $categoryObject) {
-                if ($typeID = ArrayHelper::getValue($this->getTypeRules(), $categoryObject->name)) {
+            foreach ($this->categories as $categoryName) {
+                if ($typeID = ArrayHelper::getValue($this->getTypeRules(), $categoryName)) {
                     $typeAlbums = new TypeAlbums();
                     $typeAlbums->attributes = [
                         'album_id' => $this->id,

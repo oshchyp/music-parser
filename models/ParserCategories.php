@@ -62,6 +62,7 @@ class ParserCategories extends Parser
             foreach ($categories as $k=>$v){
                  $model = static::getCategoryInstance($v['name']);
                  $model->level = $v['subLevel'];
+                 $model->name = $v['name'];
                  if (isset($v['parent']) && isset($conformityIds[$v['parent']])){
                      $model->father_id = $conformityIds[$v['parent']];
                  }
