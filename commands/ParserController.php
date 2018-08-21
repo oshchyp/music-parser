@@ -13,6 +13,7 @@ use app\models\Parser;
 use app\models\ParserAlbumLinks;
 use app\models\ParserAlbums;
 use app\models\ParserAlbumsArchives;
+use app\models\ParserCategories;
 use app\models\ParserPaginationLinks;
 use app\models\SecondThread;
 use yii\console\Controller;
@@ -23,6 +24,11 @@ class ParserController extends Controller
 
     public function actionIndex($message){
         echo $message . "\n";
+        return ExitCode::OK;
+    }
+
+    public function actionCategories(){
+        ParserCategories::getInstance()->loadPage()->parse()->convertCategories()->saveToJson()->saveToDB();
         return ExitCode::OK;
     }
 

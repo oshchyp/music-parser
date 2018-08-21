@@ -28037,3 +28037,158 @@ $_SERVER = [
     ]
     'argc' => 5
 ]
+2018-08-21 08:17:35 [-][-][-][error][Error] Error: Call to undefined method simplehtmldom_1_5\simple_html_dom_node::attr() in /Users/programmer_5/Sites/parser-music/models/ParserCategories.php:35
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/Parser.php(171): app\models\ParserCategories->parseCategories()
+#1 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(31): app\models\Parser->parse()
+#2 [internal function]: app\commands\ParserController->actionCategories()
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('categories', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('categories', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/categori...', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/categori...', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#11 {main}
+2018-08-21 08:17:35 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534839455.3768
+    'REQUEST_TIME' => 1534839455
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/categories'
+    ]
+    'argc' => 2
+]
+2018-08-21 08:47:40 [-][-][-][error][Error] Error: Call to a member function saveToJson() on array in /Users/programmer_5/Sites/parser-music/commands/ParserController.php:31
+Stack trace:
+#0 [internal function]: app\commands\ParserController->actionCategories()
+#1 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#2 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('categories', Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('categories', Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/categori...', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/categori...', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#8 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#9 {main}
+2018-08-21 08:47:40 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534841260.1949
+    'REQUEST_TIME' => 1534841260
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/categories'
+    ]
+    'argc' => 2
+]
+2018-08-21 08:48:11 [-][-][-][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined index: parent in /Users/programmer_5/Sites/parser-music/models/ParserCategories.php:67
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ParserCategories.php(67): yii\base\ErrorHandler->handleError(8, 'Undefined index...', '/Users/programm...', 67, Array)
+#1 /Users/programmer_5/Sites/parser-music/models/ParserCategories.php(59): app\models\ParserCategories->recursiveConvertCategories(Array)
+#2 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(31): app\models\ParserCategories->convertCategoriesSecond()
+#3 [internal function]: app\commands\ParserController->actionCategories()
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('categories', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('categories', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/categori...', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/categori...', Array)
+#10 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#11 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#12 {main}
+2018-08-21 08:48:10 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534841290.7174
+    'REQUEST_TIME' => 1534841290
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/categories'
+    ]
+    'argc' => 2
+]
