@@ -8,6 +8,7 @@
 
 namespace app\commands;
 
+use app\models\ArchiveHandling;
 use app\models\LoginIsraCloud;
 use app\models\Parser;
 use app\models\ParserAlbumLinks;
@@ -84,9 +85,13 @@ class ParserController extends Controller
 
     public function actionDebug(){
        // phpinfo();die();
-        (new LoginIsraCloud) -> login();
-        $instance = ParserAlbums::pAlbum('https://www.israbox.ch/3136455199-till-bronner-till-bronner-2cd-deluxe-edition-2012.html');
-        $instance->saveToDb();
+//        (new LoginIsraCloud) -> login();
+//        $instance = ParserAlbums::pAlbum('https://www.israbox.ch/3136455199-till-bronner-till-bronner-2cd-deluxe-edition-2012.html');
+//        $instance->saveToDb();
+
+        $instance = ArchiveHandling::getInstance(['filePath' => '@app/music_files/archives/debug2.rar']);
+        $instance->unarchive();
+
         return ExitCode::OK;
     }
 

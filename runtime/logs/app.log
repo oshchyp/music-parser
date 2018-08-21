@@ -28784,3 +28784,1254 @@ $_SERVER = [
     ]
     'argc' => 2
 ]
+2018-08-21 10:38:49 [-][-][-][error][yii\base\ErrorException:1] yii\base\ErrorException: Class 'app\models\model' not found in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:12
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2018-08-21 10:38:49 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534847929.317
+    'REQUEST_TIME' => 1534847929
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 11:02:19 [-][-][-][error][Error] Error: Class 'app\models\Yii' not found in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:64
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(56): app\models\ArchiveHandling->unrar()
+#1 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#2 [internal function]: app\commands\ParserController->actionDebug()
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#11 {main}
+2018-08-21 11:02:19 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534849339.6857
+    'REQUEST_TIME' => 1534849339
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 11:02:34 [-][-][-][error][yii\base\UnknownMethodException] yii\base\UnknownMethodException: Calling unknown method: app\models\ArchiveHandling::unzip() in /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Component.php:300
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(59): yii\base\Component->__call('unzip', Array)
+#1 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#2 [internal function]: app\commands\ParserController->actionDebug()
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#11 {main}
+2018-08-21 11:02:34 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534849354.4444
+    'REQUEST_TIME' => 1534849354
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 11:05:10 [-][-][-][error][Error] Error: Call to undefined function app\models\rar_open() in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:66
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(57): app\models\ArchiveHandling->unrar()
+#1 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#2 [internal function]: app\commands\ParserController->actionDebug()
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#11 {main}
+2018-08-21 11:05:10 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534849510.3756
+    'REQUEST_TIME' => 1534849510
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 11:06:01 [-][-][-][error][yii\base\UnknownMethodException] yii\base\UnknownMethodException: Calling unknown method: app\models\ArchiveHandling::unzip() in /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Component.php:300
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(59): yii\base\Component->__call('unzip', Array)
+#1 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#2 [internal function]: app\commands\ParserController->actionDebug()
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#11 {main}
+2018-08-21 11:06:01 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534849561.4833
+    'REQUEST_TIME' => 1534849561
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 11:10:01 [-][-][-][error][Error] Error: Call to undefined function app\models\rar_open() in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:68
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(57): app\models\ArchiveHandling->unrar()
+#1 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#2 [internal function]: app\commands\ParserController->actionDebug()
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#11 {main}
+2018-08-21 11:10:01 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534849801.6184
+    'REQUEST_TIME' => 1534849801
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 11:11:53 [-][-][-][error][Error] Error: Class 'app\models\RarArchive' not found in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:68
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(57): app\models\ArchiveHandling->unrar()
+#1 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#2 [internal function]: app\commands\ParserController->actionDebug()
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#11 {main}
+2018-08-21 11:11:53 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534849913.8753
+    'REQUEST_TIME' => 1534849913
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 11:12:07 [-][-][-][error][Error] Error: Class 'RarArchive' not found in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:68
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(57): app\models\ArchiveHandling->unrar()
+#1 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#2 [internal function]: app\commands\ParserController->actionDebug()
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#11 {main}
+2018-08-21 11:12:07 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534849927.0179
+    'REQUEST_TIME' => 1534849927
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 11:12:08 [-][-][-][error][Error] Error: Class 'RarArchive' not found in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:68
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(57): app\models\ArchiveHandling->unrar()
+#1 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#2 [internal function]: app\commands\ParserController->actionDebug()
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#11 {main}
+2018-08-21 11:12:08 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534849928.5455
+    'REQUEST_TIME' => 1534849928
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 11:12:09 [-][-][-][error][Error] Error: Class 'RarArchive' not found in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:68
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(57): app\models\ArchiveHandling->unrar()
+#1 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#2 [internal function]: app\commands\ParserController->actionDebug()
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#11 {main}
+2018-08-21 11:12:08 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534849928.9983
+    'REQUEST_TIME' => 1534849928
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 11:12:09 [-][-][-][error][Error] Error: Class 'RarArchive' not found in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:68
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(57): app\models\ArchiveHandling->unrar()
+#1 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#2 [internal function]: app\commands\ParserController->actionDebug()
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#11 {main}
+2018-08-21 11:12:09 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534849929.4903
+    'REQUEST_TIME' => 1534849929
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 11:12:10 [-][-][-][error][Error] Error: Class 'RarArchive' not found in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:68
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(57): app\models\ArchiveHandling->unrar()
+#1 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#2 [internal function]: app\commands\ParserController->actionDebug()
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#11 {main}
+2018-08-21 11:12:10 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534849930.153
+    'REQUEST_TIME' => 1534849930
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 11:12:10 [-][-][-][error][Error] Error: Class 'RarArchive' not found in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:68
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(57): app\models\ArchiveHandling->unrar()
+#1 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#2 [internal function]: app\commands\ParserController->actionDebug()
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#11 {main}
+2018-08-21 11:12:10 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534849930.7368
+    'REQUEST_TIME' => 1534849930
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 11:12:11 [-][-][-][error][Error] Error: Class 'RarArchive' not found in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:68
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(57): app\models\ArchiveHandling->unrar()
+#1 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#2 [internal function]: app\commands\ParserController->actionDebug()
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#11 {main}
+2018-08-21 11:12:11 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534849931.2157
+    'REQUEST_TIME' => 1534849931
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 11:12:11 [-][-][-][error][Error] Error: Class 'RarArchive' not found in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:68
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(57): app\models\ArchiveHandling->unrar()
+#1 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#2 [internal function]: app\commands\ParserController->actionDebug()
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#11 {main}
+2018-08-21 11:12:11 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534849931.7732
+    'REQUEST_TIME' => 1534849931
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 11:26:13 [-][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: RarEntry::extract() expects at least 1 parameter, 0 given in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:73
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError(2, 'RarEntry::extra...', '/Users/programm...', 73, Array)
+#1 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(73): RarEntry->extract()
+#2 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(57): app\models\ArchiveHandling->unrar()
+#3 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#4 [internal function]: app\commands\ParserController->actionDebug()
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#10 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#11 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#12 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#13 {main}
+2018-08-21 11:26:13 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534850773.8665
+    'REQUEST_TIME' => 1534850773
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 11:31:15 [-][-][-][error][Error] Error: Class 'app\models\FileHelper' not found in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:43
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(75): app\models\ArchiveHandling::getOrCreateDir('@app/music_file...', false)
+#1 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(61): app\models\ArchiveHandling->unrar()
+#2 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#3 [internal function]: app\commands\ParserController->actionDebug()
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#10 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#11 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#12 {main}
+2018-08-21 11:31:15 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534851075.2184
+    'REQUEST_TIME' => 1534851075
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 11:47:32 [-][-][-][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined index: extension in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:59
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(59): yii\base\ErrorHandler->handleError(8, 'Undefined index...', '/Users/programm...', 59, Array)
+#1 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(80): app\models\ArchiveHandling::filterName('Otis Spann - Th...')
+#2 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(66): app\models\ArchiveHandling->unrar()
+#3 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#4 [internal function]: app\commands\ParserController->actionDebug()
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#10 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#11 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#12 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#13 {main}
+2018-08-21 11:47:30 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534852050.3239
+    'REQUEST_TIME' => 1534852050
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 11:49:09 [-][-][-][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined index: extension in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:60
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(60): yii\base\ErrorHandler->handleError(8, 'Undefined index...', '/Users/programm...', 60, Array)
+#1 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(81): app\models\ArchiveHandling::filterName('Otis Spann - Th...')
+#2 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(67): app\models\ArchiveHandling->unrar()
+#3 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#4 [internal function]: app\commands\ParserController->actionDebug()
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#10 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#11 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#12 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#13 {main}
+2018-08-21 11:49:07 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534852147.2295
+    'REQUEST_TIME' => 1534852147
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 12:25:05 [-][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: unlink() expects parameter 1 to be a valid path, resource given in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:83
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError(2, 'unlink() expect...', '/Users/programm...', 83, Array)
+#1 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(83): unlink(Resource id #50)
+#2 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(67): app\models\ArchiveHandling->unrar()
+#3 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#4 [internal function]: app\commands\ParserController->actionDebug()
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#10 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#11 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#12 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#13 {main}
+2018-08-21 12:25:05 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534854305.9701
+    'REQUEST_TIME' => 1534854305
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 12:49:53 [-][-][-][error][Error] Error: Non-static method ZipArchive::open() cannot be called statically in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:94
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(73): app\models\ArchiveHandling->unzip()
+#1 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#2 [internal function]: app\commands\ParserController->actionDebug()
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#11 {main}
+2018-08-21 12:49:53 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534855793.3065
+    'REQUEST_TIME' => 1534855793
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 12:51:48 [-][-][-][error][Error] Error: Class 'app\models\ZipArchive' not found in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:93
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(73): app\models\ArchiveHandling->unzip()
+#1 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#2 [internal function]: app\commands\ParserController->actionDebug()
+#3 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#11 {main}
+2018-08-21 12:51:48 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534855908.3867
+    'REQUEST_TIME' => 1534855908
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 13:37:13 [-][-][-][error][Error] Error: Class 'app\models\ZipArchive' not found in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:91
+Stack trace:
+#0 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(109): app\models\ArchiveHandling->archive()
+#1 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(74): app\models\ArchiveHandling->unrar()
+#2 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#3 [internal function]: app\commands\ParserController->actionDebug()
+#4 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#5 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#10 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#11 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#12 {main}
+2018-08-21 13:37:11 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534858631.1453
+    'REQUEST_TIME' => 1534858631
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]
+2018-08-21 13:39:02 [-][-][-][error][yii\base\ErrorException:2] yii\base\ErrorException: ZipArchive::close(): Failure to create temporary file: No such file or directory in /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php:96
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError(2, 'ZipArchive::clo...', '/Users/programm...', 96, Array)
+#1 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(96): ZipArchive->close()
+#2 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(109): app\models\ArchiveHandling->archive()
+#3 /Users/programmer_5/Sites/parser-music/models/ArchiveHandling.php(74): app\models\ArchiveHandling->unrar()
+#4 /Users/programmer_5/Sites/parser-music/commands/ParserController.php(93): app\models\ArchiveHandling->unarchive()
+#5 [internal function]: app\commands\ParserController->actionDebug()
+#6 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#8 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('debug', Array)
+#9 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('debug', Array)
+#10 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('parser/debug', Array)
+#11 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('parser/debug', Array)
+#12 /Users/programmer_5/Sites/parser-music/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /Users/programmer_5/Sites/parser-music/yii(20): yii\base\Application->run()
+#14 {main}
+2018-08-21 13:38:59 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'TMPDIR' => '/var/folders/mk/rk3r24ws3lg3ry3jj9_v6nb80000gn/T/'
+    'Apple_PubSub_Socket_Render' => '/private/tmp/com.apple.launchd.IshqR3B41G/Render'
+    'USER' => 'programmer_5'
+    'SSH_AUTH_SOCK' => '/private/tmp/com.apple.launchd.d0xyfzQo8t/Listeners'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x7:0x31'
+    'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands'
+    'PWD' => '/Users/programmer_5/Sites/parser-music'
+    'XPC_FLAGS' => '0x0'
+    'XPC_SERVICE_NAME' => '0'
+    'SHLVL' => '1'
+    'HOME' => '/Users/programmer_5'
+    'LOGNAME' => 'programmer_5'
+    'LC_CTYPE' => 'en_US.UTF-8'
+    '_' => '/usr/local/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1534858739.9008
+    'REQUEST_TIME' => 1534858739
+    'argv' => [
+        0 => 'yii'
+        1 => 'parser/debug'
+    ]
+    'argc' => 2
+]

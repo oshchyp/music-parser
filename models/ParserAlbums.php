@@ -302,6 +302,11 @@ class ParserAlbums extends Parser
         if (!$this->download_link) {
             $archiveModel = ParserAlbumsArchives::getInstance(['domain' => $this->download_link_donor, 'archivePath' => $this->getArchivePath()]);
             $archiveModel->loadPage();
+
+//            $archiveHandling = ArchiveHandling::getInstance(['filePath'=>$this->getArchivePath()]);
+//            $archiveHandling->unarchive();
+//            $this->archivePath = $archiveHandling->getNewFilePath();
+
             $this->archivePath = $this->getArchivePath();
         }
         return $this;
