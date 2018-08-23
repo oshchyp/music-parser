@@ -11,6 +11,7 @@ namespace app\models;
 
 use Yii;
 use yii\base\Model;
+use yii\db\Exception;
 use yii\helpers\FileHelper;
 
 class ArchiveHandling extends Model
@@ -69,14 +70,16 @@ class ArchiveHandling extends Model
     }
 
     public function unarchive(){
-        switch (mb_strtolower(pathinfo($this->filePath)['extension'])){
-            case 'rar':
-                $this->unrar();
-                break;
-            case 'zip':
-                $this->unzip();
-                break;
+        if (is_file(Yii::getAlias($this->filePath))) {
+            switch (mb_strtolower(pathinfo($this->filePath)['extension'])) {
+                case 'rar':
+                    $this->unrar();
+                    break;
+                case 'zip':
+                    $this->unzip();
+                    break;
 
+            }
         }
         return $this;
     }
@@ -111,14 +114,15 @@ class ArchiveHandling extends Model
     }
 
     public function unrar(){
-        if (is_file(Yii::getAlias($this->filePath)) && $rarObject = \RarArchive::open(Yii::getAlias($this->filePath))){
-            $entries = $rarObject->getEntries();
-            foreach ($entries as $obj){
-                $obj->extract(static::getOrCreateDir($this->getTmpDirArchive(), false));
-            }
-            $rarObject->close();
-        }
 
+
+            if (is_file(Yii::getAlias($this->filePath)) && $rarObject = \RarArchive::open(Yii::getAlias($this->filePath))) {
+                $entries = $rarObject->getEntries();
+                foreach ($entries as $obj) {
+                    $obj->extract(static::getOrCreateDir($this->getTmpDirArchive(), false));
+                }
+                $rarObject->close();
+            }
         return true;
     }
 

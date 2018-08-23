@@ -29,21 +29,21 @@ class Parser extends Model
     protected function _curl()
     {
         static::$qReq++;
-        $file = $this->getFileDownloadPath() ? fopen($this->getFileDownloadPath(),'w+') : null;
+        $file = $this->getFileDownloadPath() ? fopen($this->getFileDownloadPath(), 'w+') : null;
         $ch = curl_init();
         $options = [
             CURLOPT_URL => $this->getUrl(),
             CURLOPT_RETURNTRANSFER => 1,
         ];
         if ($this->getCookiePath()) {
-            $options +=[
+            $options += [
                 CURLOPT_COOKIEJAR => $this->getCookiePath(),
                 CURLOPT_COOKIEFILE => $this->getCookiePath(),
             ];
         }
 
         if ($file) {
-            $options +=[
+            $options += [
                 CURLOPT_TIMEOUT => 600,
                 CURLOPT_FILE => $file,
                 CURLOPT_FOLLOWLOCATION => true,
@@ -51,7 +51,7 @@ class Parser extends Model
                 CURLOPT_SSL_VERIFYPEER => '0',
                 CURLOPT_VERBOSE => true,
             ];
-       }
+        }
         curl_setopt_array($ch, $options);
         $this->content = curl_exec($ch);
         $responseCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -70,7 +70,14 @@ class Parser extends Model
 
     public function loadPage()
     {
+
+        $this->loadModel();
+//        if ($content = $this->content){
+//            $html = $content;
+//        } else {
         $html = $this->_curl();
+        //  }
+
         $this->pageObject = HtmlDomParser::str_get_html($html);
 
         return $this;
@@ -88,9 +95,11 @@ class Parser extends Model
 
     public function getLogPath()
     {
-        $path = Yii::getAlias($this->logPath) . '/' . str_replace('app\\models\\','',static::className()).'/'.str_replace(['https://','/'],['','-'],$this->getUrl());
 
-        return $this->getOrCreateDir($path);
+        $fileName = $this->getUrl() ? $this->getUrl() : uniqid() . '.txt';
+        $path = Yii::getAlias($this->logPath) . '/' . str_replace('app\\models\\', '', static::className()) . '/' . str_replace(['https://', '/'], ['', '-'], $fileName);
+        $path = $this->getOrCreateDir($path);
+        return $path;
     }
 
     public function getFilePath()
@@ -110,6 +119,7 @@ class Parser extends Model
 
     public function setLogs()
     {
+
         $arr = [
             'domain' => $this->domain,
             'url' => $this->url,
@@ -118,6 +128,7 @@ class Parser extends Model
         ];
         $json = Json::encode($arr);
         file_put_contents($this->getLogPath(), $json);
+
     }
 
     public function findDom($selector)
@@ -142,12 +153,24 @@ class Parser extends Model
         return $this;
     }
 
+    public static function clearDirectories(){
+         $dirs = [
+             '@app/music_files/archives','@app/music_files/archive_handling','@app/music_files/logs/second_thread/tmp'
+         ];
+         foreach ($dirs as $path){
+             if (is_dir(Yii::getAlias($path))) {
+                 FileHelper::removeDirectory(Yii::getAlias($path));
+             }
+         }
+    }
+
     public static function getOrCreateDir($path)
     {
-        if (!is_dir(pathinfo($path)['dirname'])) {
-            FileHelper::createDirectory(pathinfo($path)['dirname']);
+        if (is_string($path) && $path) {
+            if (!is_dir(pathinfo($path)['dirname'])) {
+                FileHelper::createDirectory(pathinfo($path)['dirname']);
+            }
         }
-
         return $path;
     }
 

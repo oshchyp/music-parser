@@ -17,11 +17,22 @@ use app\models\ParserAlbumsArchives;
 use app\models\ParserCategories;
 use app\models\ParserPaginationLinks;
 use app\models\SecondThread;
+use app\models\UploadAlbumArchive;
+use yii\base\ErrorException;
 use yii\console\Controller;
 use yii\console\ExitCode;
 
 class ParserController extends Controller
 {
+
+//    public function actionError()
+//    {
+//        $exception = Yii::$app->errorHandler->exception;
+//        if ($exception !== null) {
+//            return 'qw3ed';
+//        }
+//    }
+
 
     public function actionIndex($message){
         echo $message . "\n";
@@ -58,10 +69,14 @@ class ParserController extends Controller
 
     public function actionAlbumsArchives($albumFilePath,$logPath,$tmpPath){
         $model = ParserAlbums::getInstance(['filePath'=>$albumFilePath])->loadModel();
-        $model->saveArchive();
-        $model-> saveToJson();
 
-        SecondThread::execStatic(['route'=>'parser/albums-archives-upload','params'=>[$albumFilePath]],2);
+        try {
+            $model->saveArchive();
+            $model-> saveToJson();
+            SecondThread::execStatic(['route'=>'parser/albums-archives-upload','params'=>[$albumFilePath]],2);
+        } catch (\Exception $e){
+            echo $e->getMessage();
+        }
 
         SecondThread::endScript($logPath,$tmpPath);
         SecondThread::execLines('parser/albums-archives');
@@ -71,9 +86,14 @@ class ParserController extends Controller
     public function actionAlbumsArchivesUpload($albumFilePath,$logPath='',$tmpPath=''){
 
         $model = ParserAlbums::getInstance(['filePath'=>$albumFilePath])->loadModel();
-        $model->uploadArchive(true);
-        $model-> saveToJson();
-        $model->saveToDb();
+        try {
+            $model->uploadArchive(true);
+            $model->saveToJson();
+            $model->saveToDb();
+
+        } catch (\Exception $e){
+
+        }
         SecondThread::endScript($logPath,$tmpPath);
 
         SecondThread::execLines('parser/albums-archives-upload');
@@ -81,20 +101,15 @@ class ParserController extends Controller
         return ExitCode::OK;
     }
 
-  //  public function action
+  public function actionClearDirectories(){
+        Parser::clearDirectories();
+        return ExitCode::OK;
+  }
 
     public function actionDebug(){
-       // phpinfo();die();
-//        (new LoginIsraCloud) -> login();
-//        $instance = ParserAlbums::pAlbum('https://www.israbox.ch/3136455199-till-bronner-till-bronner-2cd-deluxe-edition-2012.html');
-//        $instance->saveToDb();
-
-        $instance = ArchiveHandling::getInstance(['filePath' => '@app/music_files/archives/test.rar']);
-        $instance->unarchive();
-        $instance->handlingTmpDir();
-        $instance->archive();
-
-        return ExitCode::OK;
+         (new LoginIsraCloud) -> login();
+          $instance = ParserAlbums::pAlbum('https://www.israbox.ch/3137661249-allegra-levy-lonely-city-2014-320-kbps.html');
+         return ExitCode::OK;
     }
 
     public function actionTest($logPath,$tmpPath)

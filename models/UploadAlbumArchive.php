@@ -10,6 +10,7 @@ namespace app\models;
 
 use Yii;
 use yii\base\Model;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 
 class UploadAlbumArchive extends Model
@@ -22,12 +23,12 @@ class UploadAlbumArchive extends Model
 
     public $apiUrl = 'https://api.fc.4crp.com';
 
-    private function _curl($url, $data = [], $headers = [])
+    private function _curl($url, $data = [], $headers = [], $post = true)
     {
         $options = [
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_POST => true,
+            CURLOPT_POST => $post,
             CURLOPT_URL => $url,
         ];
         if ($data) {
@@ -39,9 +40,11 @@ class UploadAlbumArchive extends Model
         $ch = curl_init();
         curl_setopt_array($ch, $options);
         $response = curl_exec($ch);
-        //dump($response, 1);
+        $responseCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
-
+        if ($responseCode !== 200) {
+            $response=null;
+        }
         return $response;
     }
 
@@ -55,13 +58,16 @@ class UploadAlbumArchive extends Model
         $dataJson = Json::encode($data);
         $headers = [
             'Content-Type: application/json',
-            'Content-Length: '.strlen($dataJson),
-            'Api-Token: '.$this->token,
+            'Content-Length: ' . strlen($dataJson),
+            'Api-Token: ' . $this->token,
         ];
-        $response = $this->_curl($this->apiUrl.'/upldreq', $dataJson, $headers);
-        $responseArray = Json::decode($response, true);
-        if (array_key_exists('link', $responseArray)) {
-            return $responseArray['link'];
+        $response = $this->_curl($this->apiUrl . '/upldreq', $dataJson, $headers);
+
+        if ($response) {
+            $responseArray = Json::decode($response, true);
+            if (array_key_exists('link', $responseArray)) {
+                return $responseArray['link'];
+            }
         }
 
         return null;
@@ -71,16 +77,19 @@ class UploadAlbumArchive extends Model
     {
         ini_set('memory_limit', '500M');
         $data = [
-            'file' => curl_file_create($this->getFilePath() , mime_content_type($this->getFilePath()), basename($this->getFilePath()))
+            'file' => curl_file_create($this->getFilePath(), mime_content_type($this->getFilePath()), basename($this->getFilePath()))
         ];
         $headers = [
             'Content-Type: multipart/form-data',
-            'Api-Token: '.$this->token,
+            'Api-Token: ' . $this->token,
         ];
         $response = $this->_curl($url, $data, $headers);
-        $responseArray = Json::decode($response, true);
-        if (array_key_exists('uid', $responseArray)) {
-            return 'https://fc.4crp.com/d/'.$responseArray['uid'];
+
+        if ($response) {
+            $responseArray = Json::decode($response, true);
+            if (array_key_exists('uid', $responseArray)) {
+                return 'https://fc.4crp.com/d/' . $responseArray['uid'];
+            }
         }
 
         return null;
@@ -93,17 +102,44 @@ class UploadAlbumArchive extends Model
 
     public function upload()
     {
-        $uploadLink = $this->getUploadLink();
-        if ($uploadLink) {
-            return $this->getPublicLink('https://'.$uploadLink);
+
+        if (is_file($this -> getFilePath()) && $uploadLink = $this->getUploadLink()) {
+            return $this->getPublicLink('https://' . $uploadLink);
         }
 
         return null;
     }
 
-    public function deleteLocalArchive(){
-        if (is_file($this->getFilePath())){
+    public function deleteLocalArchive()
+    {
+        if (is_file($this->getFilePath())) {
             unlink($this->getFilePath());
         }
     }
+
+    public function getRootDirInfo()
+    {
+        $headers = [
+            'Content-Type: multipart/form-data',
+            'Api-Token: ' . $this->token,
+        ];
+        $infoJson = $this->_curl('https://api.fc.4crp.com/fs', [], $headers, false);
+        $infoArray = $infoJson ? Json::decode($infoJson) : [];
+        return ArrayHelper::getValue($infoArray, 'items', []);
+    }
+
+    public function fileExist($url)
+    {
+        $files = $this->getRootDirInfo();
+        if ($url && $files) {
+            $uid = basename($url);
+            foreach ($files as $fileInfo) {
+                if ($fileInfo['uid'] == $uid) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }

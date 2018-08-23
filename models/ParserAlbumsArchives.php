@@ -28,7 +28,11 @@ class ParserAlbumsArchives extends Parser
 
     public function getFileDownloadPath(){
        // $path = Yii::getAlias($this->archivePath).'/'.str_replace('.html','',basename($this->domain));
-        return static::getOrCreateDir(Yii::getAlias($this->archivePath));
+        $path = static::getOrCreateDir(Yii::getAlias($this->archivePath));
+        if (is_dir($path) && $this->domain){
+            $path .= '/'.str_replace('.html','',basename($this->domain));
+        }
+        return $this->domain ? $path : null;
     }
 
 }

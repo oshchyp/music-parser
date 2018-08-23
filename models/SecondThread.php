@@ -108,19 +108,25 @@ class SecondThread extends Model
         if (is_dir($dir) && $files = FileHelper::findFiles($dir)){
 
             foreach ($files as $filePath){
-                $fileContent = file_get_contents($filePath);
-                $fileContentJson = Json::decode($fileContent,true);
+              if (is_file($filePath)) {
+                  $this->execFromFile($filePath);
+              }
 
-                $instance = static::execStatic(
-                    [
-                        'route'=>ArrayHelper::getValue($fileContentJson,'route',''),
-                        'params'=>ArrayHelper::getValue($fileContentJson,'params','')
-                    ],
-                    3);
-                $unlink = unlink($filePath);
-              // var_dump($instance); die();
             }
         }
+    }
+
+    public function execFromFile($filePath){
+        $fileContent = file_get_contents($filePath);
+        $fileContentJson = Json::decode($fileContent,true);
+
+        static::execStatic(
+            [
+                'route'=>ArrayHelper::getValue($fileContentJson,'route',''),
+                'params'=>ArrayHelper::getValue($fileContentJson,'params','')
+            ],
+            3);
+        unlink($filePath);
     }
 
     public function startScript(){

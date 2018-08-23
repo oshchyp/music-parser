@@ -47,8 +47,6 @@ class ParserAlbums extends Parser
 
     public $archivePath;
 
-    private $_descriptionHtml;
-
     public function rules()
     {
         return [
@@ -112,19 +110,15 @@ class ParserAlbums extends Parser
         return $this;
     }
 
-    public function parseContent()
-    {
-        if ($spanObject = $this->pageObject->find('div#dle-content div.content', 0)) {
-            $this->content = $spanObject->outertext;
-        }
-
-        return $this;
-    }
 
     public function parseTitle()
     {
         if ($spanObject = $this->pageObject->find('h1[itemprop=name]', 0)) {
             $this->title = $spanObject->text();
+
+            $this->title = str_replace('&#039;','\'',$this->title);
+            $this->title = addslashes($this->title);
+           // var_dump($this->title); die();
         }
 
         return $this;
@@ -166,6 +160,7 @@ class ParserAlbums extends Parser
 
     public function parseCategories()
     {
+        $this->categories=[];
         if ($catObject = $this->pageObject->find('div#dle-content div.content dt.end a')) {
             foreach ($catObject as $aObject) {
                 $this->categories[] = str_replace(['&amp;', '  '], ['', ' '], $aObject->text());
@@ -175,70 +170,52 @@ class ParserAlbums extends Parser
         return $this;
     }
 
+    private function _replaceHtml($obj){
+        if ($obj) {
+            foreach ($obj as $item) {
+                $this->description = str_replace($item->outertext, '', $this->description);
+            }
+        }
+    }
+
+    private function _replaceDubleBR($brStyle='<br>'){
+        $array = explode($brStyle.$brStyle,$this->description);
+        foreach ($array as $k=>$v){
+            if (!trim($v)){
+                unset($array[$k]);
+            }
+        }
+        $this->description = implode($brStyle.$brStyle,$array);
+    }
+
     private function _handlingDescriptionHtml()
     {
-        $descriptionObject = $this->_getDescriptionObject();
-        if ($descriptionObject) {
-//            $replaceObject = $descriptionObject->find('div.quote');
-//            if ($replaceObject) {
-//                foreach ($replaceObject as $v) {
-//                    if ($v->find('a')) {
-//                        $this->_descriptionHtml = str_replace($v->outertext, '', $this->_descriptionHtml);
-//                    }
-//                }
-//            }
-
-            $replaceImgObj = $descriptionObject->find('img');
-            if ($replaceImgObj) {
-                foreach ($replaceImgObj as $item) {
-                    $this->_descriptionHtml = str_replace($item->outertext, '', $this->_descriptionHtml);
+        if ($this->description && $descriptionObject = HtmlDomParser::str_get_html($this->description)){
+            $replaceSelectors = [
+                'img','comment','a','div[style="text-align:center;"]'
+            ];
+            foreach ($replaceSelectors as $selector){
+                if ($descriptionObject) {
+                    $this->_replaceHtml($descriptionObject->find($selector));
                 }
+                $descriptionObject = HtmlDomParser::str_get_html($this->description);
             }
-
-            $comment = $descriptionObject->find('comment');
-            if ($comment) {
-                foreach ($comment as $item) {
-                    $this->_descriptionHtml = str_replace($item->outertext, '', $this->_descriptionHtml);
-                }
+            $this->description = strip_tags($this->description, '<br><br /><br/>');
+            $brStyles = ['<br>','<br />','<br/>'];
+            foreach ($brStyles as $brStyle){
+                $this->_replaceDubleBR($brStyle);
             }
-
-            $links = $descriptionObject->find('a');
-            if ($links) {
-                foreach ($links as $item) {
-                    $this->_descriptionHtml = str_replace($item->outertext, '', $this->_descriptionHtml);
-                }
-            }
+            $this->description = trim($this->description);
         }
-        // var_dump($this->_descriptionHtml);die();
     }
 
-    private function _getDescriptionObject()
-    {
-        return HtmlDomParser::str_get_html($this->_getDescriptionHtml());
-    }
-
-    private function _getDescriptionHtml()
-    {
-        if ($this->_descriptionHtml == null) {
-            $descObject = $this->pageObject->find('div#dle-content div.content span[itemprop=description]', 0);
-            if ($descObject) {
-                $this->_descriptionHtml = $descObject->innertext;
-                $this->_handlingDescriptionHtml();
-            } else {
-                $this->_descriptionHtml = '';
-            }
-        }
-        return $this->_descriptionHtml;
-    }
 
     public function parseDescription()
     {
-//        if ($this->_getDescriptionObject() && $descObject = $this->_getDescriptionObject()->find('div.quote', 0)) {
-//            $this->description = $descObject->innertext;
-//        }
-
-        if ($descObject = $this->_getDescriptionObject()) {
+        $descObject = $this->pageObject->find('div#dle-content div.content span[itemprop=description]', 0);
+        if ($descObject) {
             $this->description = $descObject->innertext;
+            $this -> _handlingDescriptionHtml();
         }
         return $this;
     }
@@ -285,43 +262,52 @@ class ParserAlbums extends Parser
         $this->filePath = '@app/music_files/json/albums/' . $jsonFileName . '.json';
     }
 
-    public function loadPage()
+//    public function loadPage()
+//    {
+//        if ($this->loadModel()->title) {
+//            $this->pageObject = null;
+//
+//            return $this;
+//        }
+//
+//        return parent::loadPage(); // TODO: Change the autogenerated stub
+//    }
+
+    public function downloadFileExist()
     {
-        if ($this->loadModel()->title) {
-            $this->pageObject = null;
-
-            return $this;
-        }
-
-        return parent::loadPage(); // TODO: Change the autogenerated stub
+        return (new UploadAlbumArchive())->fileExist($this->download_link);
     }
 
     public function saveArchive()
     {
-        //  if (!$this->download_link) {
-        $archiveModel = ParserAlbumsArchives::getInstance(['domain' => $this->download_link_donor, 'archivePath' => $this->getArchivePath()]);
-        $archiveModel->loadPage();
+        if (!$this->downloadFileExist() && !is_file(Yii::getAlias($this->getArchivePath()))) {
+            $archiveModel = ParserAlbumsArchives::getInstance(['domain' => $this->download_link_donor, 'archivePath' => $this->getArchivePath()]);
+            $archiveModel->loadPage();
 
-        $archiveHandling = ArchiveHandling::getInstance(['filePath' => '@app/music_files/archives/test.rar']);
-        $archiveHandling->unarchive();
-        $archiveHandling->handlingTmpDir();
-        $archiveHandling->archive();
-        $this->archivePath = $archiveHandling->getNewFilePath();
+            try {
+                $archiveHandling = ArchiveHandling::getInstance(['filePath' => $this->getArchivePath()]);
+                $archiveHandling->unarchive();
+                $archiveHandling->handlingTmpDir();
+                $archiveHandling->archive();
+                $this->archivePath = $archiveHandling->getNewFilePath();
+            } catch (\Exception $e) {
 
-        //   }
+            }
+
+        }
         return $this;
     }
 
     public function uploadArchive($delete = false)
     {
-        // if (!$this->download_link) {
-        $uploadModel = new UploadAlbumArchive();
-        $uploadModel->filePath = $this->archivePath;
-        $this->download_link = $uploadModel->upload();
-        if ($delete) {
-            $uploadModel->deleteLocalArchive();
+        if (!$this->downloadFileExist()) {
+            $uploadModel = new UploadAlbumArchive();
+            $uploadModel->filePath = $this->archivePath;
+            $this->download_link = $uploadModel->upload();
+            if ($delete) {
+                $uploadModel->deleteLocalArchive();
+            }
         }
-        // }
         return $this;
     }
 
@@ -371,6 +357,7 @@ class ParserAlbums extends Parser
 
     public static function partParsing($pagesModel = [])
     {
+       // var_dump($pagesModel); die();
         if ($pagesModel) {
             foreach ($pagesModel as $v) {
                 if ($v->links) {

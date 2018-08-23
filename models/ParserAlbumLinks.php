@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\models\helper\Math;
+use Yii;
 
 class ParserAlbumLinks extends Parser
 {
@@ -69,24 +70,25 @@ class ParserAlbumLinks extends Parser
     }
 
 
-    public static function partParsing($endPage)
+    public static function partParsing($qPages)
     {
      //   var_dump(static::getLastParsingPage());die();
         $pages = [];
         $pagination = ParserPaginationLinks::getInstance()->loadModel();
-      //  var_dump($pagination->links); die();
+        $startPage = static::getLastParsingPage();
+        $endPage = $startPage + $qPages;
         if ($pagination->links) {
             $k = 0;
             foreach ($pagination->links as $k => $url) {
 //var_dump($k); var_dump(static::getLastParsingPage());
-                if ($k >= static::getLastParsingPage() && $k <= $endPage+static::getLastParsingPage()) {
+                if ($k >= $startPage && $k < $endPage) {
                     $pages[] = static::pInfo($url, $k);
                 }
-                if ($k > $endPage+static::getLastParsingPage()) {
+                if ($k >= $endPage) {
                     break;
                 }
             }
-            file_put_contents(static::getOrCreateDir(Yii::getAlias(static::$lastParsingFilePath)), $k+1);
+            file_put_contents(static::getOrCreateDir(Yii::getAlias(static::$lastParsingFilePath)), $endPage);
         }
         return $pages;
     }
